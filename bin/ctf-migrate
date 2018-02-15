@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+// vim: set ft=javascript:
+
+
+const program = require('commander');
+const pkg = require('../package.json');
+
+program
+  .version(pkg.version)
+  .description('Manage your Contentful schema by creating incremental scripted changes')
+  .command('init', 'Initialize the "Migration" into your contentful space')
+  .command('bootstrap', 'Takes a snapshot of existing space and automatically generate migration scripts')
+  .command('create <name>', 'Create a new migration')
+  .command('list', 'List migrations and their status')
+  .command('up [name]', 'Migrate up to a give migration or all pending if not specified')
+  .command('down [name]', 'Migrate down to a given migration or just the last one if not specified')
+  .parse(process.argv);

@@ -1,0 +1,13 @@
+.idea
+*.iml
+*.swp
+.vscode
+.DS_Store
+node_modules
+openshift
+Jenkinsfile
+.travis.yml
+logo.png
+sonar-project.properties
+coverage
+.scannerwork

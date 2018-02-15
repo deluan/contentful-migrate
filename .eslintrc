@@ -1,0 +1,6 @@
+{
+  "extends": "@telusdigital/eslint-config",
+  "rules": {
+    "semi": [ "error", "always"]
+  }
+}

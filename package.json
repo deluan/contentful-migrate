@@ -1,0 +1,76 @@
+{
+  "name": "contentful-migrate",
+  "version": "0.1.0",
+  "description": "Migration tooling for Contentful, with state management",
+  "keywords": [
+    "migrate",
+    "migrations",
+    "contentful"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "bin": {
+    "ctf-migrate": "./bin/ctf-migrate"
+  },
+  "scripts": {
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "precommit": "yarn test",
+    "test": "yarn run lint && yarn run unit && yarn run security",
+    "lint": "eslint 'lib' 'bin' --ext .js --ignore-pattern lib/template.js --config .eslintrc",
+    "lint:fix": "yarn run lint --fix",
+    "unit": "JEST_JUNIT_OUTPUT=jest/unit.xml jest",
+    "unit:clear": "jest -u",
+    "unit:watch": "jest --watchAll --notify --collectCoverage false",
+    "security": "nsp check",
+    "semver": "semver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deluan/contentful-migrate.git"
+  },
+  "contributors": [
+    "Deluan Quintao",
+    "Jerry Ma"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deluan/contentful-migrate/issues"
+  },
+  "homepage": "https://github.com/deluan/contentful-migrate#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^4.2.1",
+    "@commitlint/config-angular": "^4.2.1",
+    "@telusdigital/eslint-config": "^1.2.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
+    "jest": "^22.0.4",
+    "nsp": "^2.6.3",
+    "semver": "^5.3.0"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.12.2",
+    "contentful-management": "^4.1.2",
+    "contentful-migration-cli": "^0.5.0",
+    "dateformat": "^2.0.0",
+    "eslint": "^4.13.1",
+    "listr": "^0.13.0",
+    "migrate": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.js"],
+    "coverageReporters": ["json", "lcov", "text"],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "migrations",
+      "coverage"
+    ]
+  }
+}

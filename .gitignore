@@ -1,0 +1,9 @@
+.idea
+*.iml
+*.swp
+.vscode
+.DS_Store
+.nvmrc
+node_modules
+migrations
+coverage
