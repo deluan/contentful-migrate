@@ -18,7 +18,8 @@ exports.builder = (yargs) => {
       alias: 't',
       describe:
         'CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty',
-      demandOption: !process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
+      demandOption: true,
+      default: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     })
     .option('space-id', {
       alias: 's',
@@ -31,8 +32,7 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  const { spaceId, dangerWillRobinsonDanger } = argv;
-  const accessToken = argv.accessToken || process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN;
+  const { spaceId, dangerWillRobinsonDanger, accessToken } = argv;
   const migrationsDirectory = path.join('.', 'migrations');
 
   if (dangerWillRobinsonDanger) {

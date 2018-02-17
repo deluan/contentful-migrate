@@ -8,8 +8,8 @@ in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase
 
 Scripts are written using Contentful's [migration-cli](https://github.com/contentful/migration-cli) syntax. Ex:
 
-```javascript 1.6
-  module.exports.description = 'Creates Post model';
+```javascript
+  module.exports.description = 'Create Post model';
   
   module.exports.up = (migration) => {
     const post = migration.createContentType('post')
@@ -37,9 +37,9 @@ content type. Ex:
 your-project
 ├── README.md
 ├── migrations
-│   ├── PageTemplate
-│   │   └── 1513743198536-create-page-template.js
-│   └── Post
+│   ├── banner
+│   │   └── 1513743198536-create-banner.js
+│   └── post
 │       ├── 1513695986378-create-post.js
 │       └── 1513716408272-add-date-field.js
 ├── package.json
@@ -90,12 +90,12 @@ Creates an empty time stamped file in the content-type's migrations folder.
     -c, --content-type <content-type>  content type name
 ```
 
-Example: executing the command `ctf-migrate create -c Post create-post-model` will create 
-a file named `./migrations/Post/1513695986378-create-post.js` (the timestamp will vary)
+Example: executing the command `ctf-migrate create -c post create-post-model` will create 
+a file named `./migrations/post/1513695986378-create-post.js` (the timestamp will vary)
 
 ### list
 
-Lists all migrations for a given content-type, also indicating whether it was already 
+Lists all migrations for the given content-types, also indicating whether they were already 
 applied and when.
 
 ```
@@ -104,18 +104,23 @@ applied and when.
   Options:
   
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -c, --content-type [content-type]  content type name
     -s, --space-id [space-id]          space id to use
+    -c, --content-type [content-type]  one or more content type names to list
+    -a, --all                          lists migrations for all content types
 ```
 
 Exemple: 
 ```
-$ ctf-migrate list -c Post -s i2ztmmsocxul
-  [2017-12-19 22:12:58] 1513695986378-create-post.js : Creates Post model
+$ ctf-migrate list -s i2ztmmsocxul -c post banner
+Listing post
+  [2017-12-19 22:12:58] 1513695986378-create-post.js : Create Post model
   [pending] 1513716408272-add-title-field.js : Adds title field
+Listing banner
+  [2018-01-08 15:01:45] 20180103165614-create-banner.js : Create Banner model
+  [2018-01-22 11:01:33] 20180111172942-add-subtitle-field.js: Add Subtitle field 
 ```
-In this example, the first script (`create-post.js`) has already been applied but the 
-second one (`add-title-field.js`) has not 
+For the `post` model in this example, the first script (`create-post.js`) has already been applied but the 
+second one (`add-title-field.js`) has not. For the `banner` model, all scripts have been applied.
 
 ### up
 
@@ -123,13 +128,14 @@ Migrates up to a specific version or all pending scripts if a name is not inform
 the specified content-type into the specified space. 
 
 ```
-  Usage: ctf-migrate up [options] [name]
+  Usage: ctf-migrate up [name] [options]
 
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -c, --content-type [content-type]  content type name
+    -c, --content-type [content-type]  one or more content type names to process
     -s, --space-id [space-id]          space id to use
+    -a, --all                          processes migrations for all content types
     -d, --dry-run                      only shows the plan, don't write anything to contentful. defaults to false
 ```
 
@@ -144,8 +150,8 @@ for the specified content-type from the specified space.
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -c, --content-type [content-type]  content type name
     -s, --space-id [space-id]          space id to use
+    -c, --content-type [content-type]  content type name
     -d, --dry-run                      only shows the plan, don't write anything to contentful. defaults to false
 ```
 
