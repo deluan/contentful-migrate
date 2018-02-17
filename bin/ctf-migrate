@@ -2,7 +2,7 @@
 // vim: set ft=javascript:
 
 /* eslint-disable no-unused-expressions */
-
+// noinspection BadExpressionStatementJS
 require('yargs')
   .usage('Manage your Contentful schema by creating incremental scripted changes\nFor more information visit https://github.com/deluan/contentful-migrate')
   .commandDir('./commands')
