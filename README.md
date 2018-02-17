@@ -1,5 +1,6 @@
 # Contentful Migrate Tool
 
+[![npm](https://img.shields.io/npm/v/contentful-migrate.svg)](https://www.npmjs.com/package/contentful-migrate)
 [![Build Status](https://travis-ci.org/deluan/contentful-migrate.svg?branch=master)](https://travis-ci.org/deluan/contentful-migrate)
 
 Manage your Contentful schema by creating incremental scripted changes. Scripts are written 
