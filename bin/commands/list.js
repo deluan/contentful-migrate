@@ -47,7 +47,7 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = (argv) => {
+exports.handler = async (argv) => {
   const { spaceId, contentType, accessToken } = argv;
   const migrationsDirectory = path.join('.', 'migrations');
 
@@ -69,14 +69,15 @@ exports.handler = (argv) => {
   };
 
   // Load in migrations
-  load({
+  const sets = await load({
     migrationsDirectory, spaceId, accessToken, dryrun: false, contentTypes: contentType
-  })
-    .forEach(set => set
-      .then(listSet)
-      .catch((err) => {
-        log.error('error', err);
-        process.exit(1);
-      }));
+  });
+
+  sets.forEach(set => set
+    .then(listSet)
+    .catch((err) => {
+      log.error('error', err);
+      process.exit(1);
+    }));
 };
 
