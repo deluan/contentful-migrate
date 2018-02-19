@@ -17,9 +17,10 @@ exports.builder = (yargs) => {
     .option('access-token', {
       alias: 't',
       describe:
-        'CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty',
+        'Contentful Management API access token',
       demandOption: true,
-      default: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
+      default: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
+      defaultDescription: 'environment var CONTENTFUL_MANAGEMENT_ACCESS_TOKEN'
     })
     .option('space-id', {
       alias: 's',
