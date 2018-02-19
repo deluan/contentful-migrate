@@ -29,7 +29,8 @@ exports.builder = (yargs) => {
     .option('content-type', {
       alias: 'c',
       describe: 'one or more content type names to list',
-      array: true
+      array: true,
+      requiresArg: true
     })
     .option('all', {
       alias: 'a',
