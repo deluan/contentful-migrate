@@ -83,14 +83,14 @@ If the target space already has been init'd before, it will throw an error:
 Creates an empty time stamped file in the content-type's migrations folder.
 
 ```
-  Usage: ctf-migrate create [options] <name>
+  Usage: ctf-migrate create <name> [options] 
   
   Options:
   
     -c, --content-type <content-type>  content type name
 ```
 
-Example: executing the command `ctf-migrate create -c post create-post-model` will create 
+Example: executing the command `ctf-migrate create create-post-model -c post` will create 
 a file named `./migrations/post/1513695986378-create-post.js` (the timestamp will vary)
 
 ### list
@@ -110,7 +110,7 @@ applied and when.
 ```
 
 Exemple: 
-```
+```bash
 $ ctf-migrate list -s i2ztmmsocxul -c post banner
 Listing post
   [2017-12-19 22:12:58] 1513695986378-create-post.js : Create Post model
@@ -124,11 +124,11 @@ second one (`add-title-field.js`) has not. For the `banner` model, all scripts h
 
 ### up
 
-Migrates up to a specific version or all pending scripts if a name is not informed. This will apply pending scripts for 
+Migrates up to a specific version or all pending scripts if a filename is not informed. This will apply pending scripts for 
 the specified content-type into the specified space. 
 
 ```
-  Usage: ctf-migrate up [name] [options]
+  Usage: ctf-migrate up [filename] [options]
 
   Options:
 
@@ -141,11 +141,11 @@ the specified content-type into the specified space.
 
 ### down
 
-Migrates down to a specific version or just the last one if name is not informed. This will roll back applied scripts 
+Migrates down to a specific version or just the last one if filename is not informed. This will roll back applied scripts 
 for the specified content-type from the specified space. 
 
 ```
-  Usage: ctf-migrate down [options] [name]
+  Usage: ctf-migrate down [filename] [options]
 
   Options:
 
