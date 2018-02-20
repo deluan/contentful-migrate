@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 // vim: set ft=javascript:
+/* eslint-disable no-console */
 
 const path = require('path');
+const { promisify } = require('util');
 const chalk = require('chalk');
+const pMap = require('p-map');
 const runMigrations = require('migrate/lib/migrate');
 const log = require('migrate/lib/log');
 const load = require('../../lib/load');
@@ -31,7 +34,7 @@ exports.builder = (yargs) => {
       alias: 'c',
       describe: 'one or more content type names to process',
       array: true,
-      requiresArg: true
+      default: []
     })
     .option('all', {
       alias: 'a',
@@ -49,10 +52,10 @@ exports.builder = (yargs) => {
       type: 'string'
     })
     .check((argv) => {
-      if (argv.a && argv.c) {
+      if (argv.a && argv.c.length > 0) {
         return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
       }
-      if (!argv.a && !argv.c) {
+      if (!argv.a && argv.c.length === 0) {
         return 'At least one of \'all\' or \'content-type\' options must be specified';
       }
       if (argv.a && argv.file) {
@@ -62,23 +65,18 @@ exports.builder = (yargs) => {
     });
 };
 
+const runMigrationsAsync = promisify(runMigrations);
+
 exports.handler = async (argv) => {
   const {
     spaceId, contentType, dryrun, file, accessToken
   } = argv;
   const migrationsDirectory = path.join('.', 'migrations');
 
-  const processSet = (set) => {
-    // eslint-disable-next-line no-console
+  const processSet = async (set) => {
     console.log(chalk.bold.blue('Processing'), set.store.contentTypeID);
-    runMigrations(set, 'up', file, (error) => {
-      if (error) {
-        log('error', error);
-        process.exit(1);
-      }
-
-      log('All migrations applied for', set.store.contentTypeID);
-    });
+    await runMigrationsAsync(set, 'up', file);
+    log('All migrations applied for', `${set.store.contentTypeID}`);
   };
 
   // Load in migrations
@@ -86,10 +84,13 @@ exports.handler = async (argv) => {
     migrationsDirectory, spaceId, accessToken, dryrun, contentTypes: contentType
   });
 
-  sets.forEach(set => set
-    .then(processSet)
+  // TODO concurrency can be an cmdline option? I set it to 1 for now to make logs more readable
+  pMap(sets, processSet, { concurrency: 1 })
+    .then(() => {
+      console.log(chalk.bold.yellow('\n🎉  All content types are up-to-date'));
+    })
     .catch((err) => {
       log.error('error', err);
-      process.exit(1);
-    }));
+      console.log(chalk.bold.red('\n🚨  Error applying migrations! See above for error message '));
+    });
 };

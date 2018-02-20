@@ -31,7 +31,7 @@ exports.builder = (yargs) => {
       alias: 'c',
       describe: 'one or more content type names to list',
       array: true,
-      requiresArg: true
+      default: []
     })
     .option('all', {
       alias: 'a',
@@ -39,10 +39,10 @@ exports.builder = (yargs) => {
       boolean: true
     })
     .check((argv) => {
-      if (argv.a && argv.c) {
+      if (argv.a && argv.c.length > 0) {
         return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
       }
-      if (!argv.a && !argv.c) {
+      if (!argv.a && argv.c.length === 0) {
         return 'At least one of \'all\' or \'content-type\' options must be specified';
       }
       return true;
