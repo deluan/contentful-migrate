@@ -25,9 +25,7 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = (argv) => {
-  const { spaceId, accessToken } = argv;
-
-  const store = new ContentfulStore({ spaceId, accessToken, dryrun: false });
+exports.handler = ({ spaceId, accessToken }) => {
+  const store = new ContentfulStore({ spaceId, accessToken, dryRun: false });
   store.init();
 };

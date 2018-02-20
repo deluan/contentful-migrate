@@ -32,8 +32,7 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = (argv) => {
-  const { spaceId, dangerWillRobinsonDanger, accessToken } = argv;
+exports.handler = ({ spaceId, dangerWillRobinsonDanger, accessToken }) => {
   const migrationsDirectory = path.join('.', 'migrations');
 
   if (dangerWillRobinsonDanger) {
