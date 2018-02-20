@@ -24,9 +24,7 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = (argv) => {
-  const { name, contentType } = argv;
-
+exports.handler = ({ name, contentType }) => {
   const migrationsDirectory = path.join('.', 'migrations', contentType);
   const templateFile = path.join(__dirname, '..', '..', 'lib', 'template.js');
 

@@ -49,8 +49,7 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = async (argv) => {
-  const { spaceId, contentType, accessToken } = argv;
+exports.handler = async ({ spaceId, contentType, accessToken }) => {
   const migrationsDirectory = path.join('.', 'migrations');
 
   const listSet = (set) => {
@@ -72,7 +71,7 @@ exports.handler = async (argv) => {
 
   // Load in migrations
   const sets = await load({
-    migrationsDirectory, spaceId, accessToken, dryrun: false, contentTypes: contentType
+    migrationsDirectory, spaceId, accessToken, dryRun: false, contentTypes: contentType
   });
 
   sets.forEach(set => set

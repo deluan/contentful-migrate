@@ -67,10 +67,9 @@ exports.builder = (yargs) => {
 
 const runMigrationsAsync = promisify(runMigrations);
 
-exports.handler = async (argv) => {
-  const {
-    spaceId, contentType, dryrun, file, accessToken
-  } = argv;
+exports.handler = async ({
+  spaceId, contentType, dryRun, file, accessToken
+}) => {
   const migrationsDirectory = path.join('.', 'migrations');
 
   const processSet = async (set) => {
@@ -81,7 +80,7 @@ exports.handler = async (argv) => {
 
   // Load in migrations
   const sets = await load({
-    migrationsDirectory, spaceId, accessToken, dryrun, contentTypes: contentType
+    migrationsDirectory, spaceId, accessToken, dryRun, contentTypes: contentType
   });
 
   // TODO concurrency can be an cmdline option? I set it to 1 for now to make logs more readable
