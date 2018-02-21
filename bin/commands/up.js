@@ -28,6 +28,8 @@ exports.builder = (yargs) => {
     .option('space-id', {
       alias: 's',
       describe: 'space id to use',
+      type: 'string',
+      requiresArg: true,
       demandOption: true
     })
     .option('content-type', {
