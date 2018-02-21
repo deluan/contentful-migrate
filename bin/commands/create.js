@@ -16,6 +16,8 @@ exports.builder = (yargs) => {
     .option('content-type', {
       alias: 'c',
       describe: 'content type name',
+      type: 'string',
+      requiresArg: true,
       demandOption: true
     })
     .positional('name', {

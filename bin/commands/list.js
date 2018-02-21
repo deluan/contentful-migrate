@@ -14,7 +14,7 @@ exports.desc =
 
 exports.builder = (yargs) => {
   yargs
-    .options('access-token', {
+    .option('access-token', {
       alias: 't',
       describe:
         'Contentful Management API access token',
@@ -24,8 +24,10 @@ exports.builder = (yargs) => {
     })
     .option('space-id', {
       alias: 's',
-      describe: 'space id to use'
-      // demandOption: true
+      describe: 'space id to use',
+      type: 'string',
+      requiresArg: true,
+      demandOption: true
     })
     .option('content-type', {
       alias: 'c',
