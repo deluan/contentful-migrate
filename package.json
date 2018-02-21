@@ -1,6 +1,6 @@
 {
   "name": "contentful-migrate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Migration tooling for Contentful, with state management",
   "keywords": [
     "migrate",
@@ -23,8 +23,8 @@
     "unit": "JEST_JUNIT_OUTPUT=jest/unit.xml jest",
     "unit:clear": "jest -u",
     "unit:watch": "jest --watchAll --notify --collectCoverage false",
-    "security": "nsp check",
-    "semver": "semver"
+    "release": "github-semantic-version --bump --changelog --push --publish",
+    "security": "nsp check"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,7 @@
     "contentful-migration-cli": "^0.5.0",
     "dateformat": "^2.0.0",
     "eslint": "^4.13.1",
+    "github-semantic-version": "^7.1.0",
     "listr": "^0.13.0",
     "lodash": "^4.17.5",
     "migrate": "^1.0.0",
@@ -81,5 +82,11 @@
       "migrations",
       "coverage"
     ]
+  },
+  "gsv": {
+    "startVersion": "0.1.0",
+    "majorLabel": "Version: Major",
+    "minorLabel": "Version: Minor",
+    "patchLabel": "Version: Patch"
   }
 }

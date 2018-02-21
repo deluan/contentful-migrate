@@ -1,7 +1,16 @@
 sudo: required
 language: node_js
+cache: yarn
 node_js:
   - "8"
 script:
   - yarn test
-cache: yarn
+branches:
+  except:
+    - /^v[0-9]/
+deploy:
+  provider: script
+  script: yarn release
+  skip_cleanup: true
+  on:
+    branch: master
