@@ -3,8 +3,10 @@
 [![npm](https://img.shields.io/npm/v/contentful-migrate.svg)](https://www.npmjs.com/package/contentful-migrate)
 [![Build Status](https://travis-ci.org/deluan/contentful-migrate.svg?branch=master)](https://travis-ci.org/deluan/contentful-migrate)
 
-Manage your Contentful schema by creating incremental scripted changes. Scripts are written 
-using Contentful's [migration-cli](https://github.com/contentful/migration-cli) syntax. Ex:
+Manage your Contentful schema by creating incremental scripted changes. This project is based on the ideas exposed 
+in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/) 
+
+Scripts are written using Contentful's [migration-cli](https://github.com/contentful/migration-cli) syntax. Ex:
 
 ```javascript 1.6
   module.exports.description = 'Creates Post model';
