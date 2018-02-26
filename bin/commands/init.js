@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // vim: set ft=javascript:
 
-const { ContentfulStore } = require('../../lib/store');
+const { initSpace } = require('../../lib/store');
 
 exports.command = 'init';
 
@@ -27,7 +27,4 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = ({ spaceId, accessToken }) => {
-  const store = new ContentfulStore({ spaceId, accessToken, dryRun: false });
-  store.init();
-};
+exports.handler = async ({ accessToken, spaceId }) => initSpace(accessToken, spaceId);
