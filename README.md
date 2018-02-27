@@ -133,8 +133,8 @@ the specified content-type into the specified space.
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -c, --content-type [content-type]  one or more content type names to process
     -s, --space-id [space-id]          space id to use
+    -c, --content-type [content-type]  one or more content type names to process
     -a, --all                          processes migrations for all content types
     -d, --dry-run                      only shows the plan, don't write anything to contentful. defaults to false
 ```
@@ -144,7 +144,7 @@ the specified content-type into the specified space.
 ***ATTENTION**: As noted in the [CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/#how-to-get-started),
 "in real-world situations there is often no real way to down migrate content without resorting to backups". Even though 
 we agree with that assertion, we still think there is value in having a `down` function to make it easier to develop 
-and debug the `up` migration scripts (when you're are working on a dev/test space), as it makes it easy to revert your 
+and debug the `up` migration scripts (when you're working on a dev/test space), as it makes it easy to revert your 
 changes and try again, without resorting to any manual intervention.* 
 
 Migrates down to a specific version or just the last one if filename is not informed. This will roll back applied scripts 
