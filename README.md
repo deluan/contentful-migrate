@@ -53,6 +53,19 @@ For more information on schema migrations technique and practice, see:
 * [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html#AllDatabaseChangesAreMigrations)
 * [Schema migration](https://en.wikipedia.org/wiki/Schema_migration)
 
+### Installation
+
+Using [npm](http://npmjs.org):
+
+``` sh
+npm install -g contentful-migrate
+```
+
+Using [yarn](https://yarnpkg.com):
+``` sh
+yarn global add contentful-migrate
+```
+
 ## Usage
 
 Most of the available commands need a 
