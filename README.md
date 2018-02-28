@@ -53,7 +53,7 @@ For more information on schema migrations technique and practice, see:
 * [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html#AllDatabaseChangesAreMigrations)
 * [Schema migration](https://en.wikipedia.org/wiki/Schema_migration)
 
-### Installation
+## Installation
 
 Using [npm](http://npmjs.org):
 
