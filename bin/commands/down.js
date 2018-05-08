@@ -28,6 +28,13 @@ exports.builder = (yargs) => {
       requiresArg: true,
       demandOption: true
     })
+    .option('environment-id', {
+      alias: 'e',
+      describe: 'environment id of the space',
+      type: 'string',
+      requiresArg: true,
+      default: 'master'
+    })
     .option('content-type', {
       alias: 'c',
       describe: 'single content type name to process',
@@ -45,9 +52,16 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = async ({
-  spaceId, contentType, dryRun, file, accessToken
-}) => {
+exports.handler = async (args) => {
+  const {
+    accessToken,
+    contentType,
+    dryRun,
+    environmentId,
+    file,
+    spaceId
+  } = args;
+
   const migrationsDirectory = path.join('.', 'migrations');
 
   const processSet = (set) => {
@@ -66,7 +80,7 @@ exports.handler = async ({
 
   // Load in migrations
   const sets = await load({
-    migrationsDirectory, spaceId, accessToken, dryRun, contentTypes: [contentType]
+    migrationsDirectory, spaceId, environmentId, accessToken, dryRun, contentTypes: [contentType]
   });
 
   sets.forEach(set => set

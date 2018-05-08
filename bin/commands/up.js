@@ -32,6 +32,13 @@ exports.builder = (yargs) => {
       requiresArg: true,
       demandOption: true
     })
+    .option('environment-id', {
+      alias: 'e',
+      describe: 'environment id of the space',
+      type: 'string',
+      requiresArg: true,
+      default: 'master'
+    })
     .option('content-type', {
       alias: 'c',
       describe: 'one or more content type names to process',
@@ -69,9 +76,16 @@ exports.builder = (yargs) => {
 
 const runMigrationsAsync = promisify(runMigrations);
 
-exports.handler = async ({
-  spaceId, contentType, dryRun, file, accessToken
-}) => {
+exports.handler = async (args) => {
+  const {
+    accessToken,
+    contentType,
+    dryRun,
+    environmentId,
+    file,
+    spaceId
+  } = args;
+
   const migrationsDirectory = path.join('.', 'migrations');
 
   const processSet = async (set) => {
@@ -82,16 +96,21 @@ exports.handler = async ({
 
   // Load in migrations
   const sets = await load({
-    migrationsDirectory, spaceId, accessToken, dryRun, contentTypes: contentType
+    accessToken,
+    contentTypes: contentType,
+    dryRun,
+    environmentId,
+    migrationsDirectory,
+    spaceId
   });
 
   // TODO concurrency can be an cmdline option? I set it to 1 for now to make logs more readable
   pMap(sets, processSet, { concurrency: 1 })
     .then(() => {
-      console.log(chalk.bold.yellow('\n🎉  All content types are up-to-date'));
+      console.log(chalk.bold.yellow(`\n🎉  All content types in ${environmentId} are up-to-date`));
     })
     .catch((err) => {
       log.error('error', err);
-      console.log(chalk.bold.red('\n🚨  Error applying migrations! See above for error message '));
+      console.log(chalk.bold.red(`\n🚨  Error applying migrations in ${environmentId}! See above for error message`));
     });
 };

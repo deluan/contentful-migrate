@@ -34,7 +34,8 @@ exports.handler = ({ name, contentType }) => {
     name,
     templateFile,
     migrationsDirectory,
-    dateFormat: 'UTC:yyyymmddHHMMss'
+    dateFormat: 'UTC:yyyymmddHHMMss',
+    extension: '.js'
   }, (error, filename) => {
     if (error) {
       log(chalk.bold.red(`🚨 Template generation error ${error.message}`));
