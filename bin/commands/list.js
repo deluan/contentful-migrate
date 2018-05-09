@@ -29,6 +29,13 @@ exports.builder = (yargs) => {
       requiresArg: true,
       demandOption: true
     })
+    .option('environment-id', {
+      alias: 'e',
+      describe: 'environment id of the space',
+      type: 'string',
+      requiresArg: true,
+      default: 'master'
+    })
     .option('content-type', {
       alias: 'c',
       describe: 'one or more content type names to list',
