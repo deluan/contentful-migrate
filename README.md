@@ -118,6 +118,7 @@ applied and when.
   
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
     -s, --space-id [space-id]          space id to use
+    -e, --environment-id [env-id]      environment id of the space (default 'master')
     -c, --content-type [content-type]  one or more content type names to list
     -a, --all                          lists migrations for all content types
 ```
@@ -147,6 +148,7 @@ the specified content-type into the specified space.
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
     -s, --space-id [space-id]          space id to use
+    -e, --environment-id [env-id]      environment id of the space (default 'master')
     -c, --content-type [content-type]  one or more content type names to process
     -a, --all                          processes migrations for all content types
     -d, --dry-run                      only shows the plan, don't write anything to contentful. defaults to false
@@ -170,6 +172,7 @@ for the specified content-type from the specified space.
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
     -s, --space-id [space-id]          space id to use
+    -e, --environment-id [env-id]      environment id of the space (default 'master')
     -c, --content-type [content-type]  content type name
     -d, --dry-run                      only shows the plan, don't write anything to contentful. defaults to false
 ```
