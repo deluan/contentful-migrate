@@ -34,7 +34,7 @@ exports.builder = (yargs) => {
     })
     .option('environment-id', {
       alias: 'e',
-      describe: 'environment id of the space',
+      describe: 'id of the environment within the space',
       type: 'string',
       requiresArg: true,
       default: 'master'
