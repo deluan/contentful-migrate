@@ -2,5 +2,8 @@
   "extends": "@telusdigital/eslint-config",
   "rules": {
     "semi": [ "error", "always"]
+  },
+  "env": {
+    mocha: true
   }
 }
