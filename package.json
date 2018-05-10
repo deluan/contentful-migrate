@@ -20,7 +20,7 @@
     "test": "yarn run lint && yarn run unit && yarn run security",
     "lint": "eslint 'lib' 'bin' --ext .js --ignore-pattern lib/template.js --config .eslintrc",
     "lint:fix": "yarn run lint --fix",
-    "unit": "mocha lib/**/__tests__/*.spec.js",
+    "unit": "mocha lib/__tests__/*.spec.js lib/**/__tests__/*.spec.js",
     "unit:watch": "yarn unit --watch",
     "security": "nsp check",
     "semver": "semver"
