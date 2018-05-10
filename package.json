@@ -17,11 +17,13 @@
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "yarn test",
-    "test": "yarn run lint && yarn run unit && yarn run security",
+    "mocha": "mocha lib/__tests__/*.spec.js lib/**/__tests__/*.spec.js",
+    "test": "yarn run lint && yarn run mocha && yarn run security",
+    "test:unit": "yarn run mocha --grep @integration --invert",
+    "test:integration": "yarn run mocha --grep @integration",
+    "unit:watch": "yarn run test:unit --watch",
     "lint": "eslint 'lib' 'bin' --ext .js --ignore-pattern lib/template.js --config .eslintrc",
     "lint:fix": "yarn run lint --fix",
-    "unit": "mocha lib/__tests__/*.spec.js lib/**/__tests__/*.spec.js",
-    "unit:watch": "yarn unit --watch",
     "security": "nsp check",
     "semver": "semver"
   },
