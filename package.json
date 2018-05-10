@@ -56,7 +56,6 @@
     "dateformat": "^2.0.0",
     "eslint": "^4.13.1",
     "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.7.0",
     "listr": "^0.13.0",
@@ -66,21 +65,5 @@
     "p-map": "^1.2.0",
     "rimraf": "^2.6.2",
     "yargs": "^11.0.0"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.js"
-    ],
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "migrations",
-      "coverage"
-    ]
   }
 }
