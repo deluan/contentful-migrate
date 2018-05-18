@@ -29,12 +29,25 @@ exports.builder = (yargs) => {
       requiresArg: true,
       demandOption: true
     })
+    .option('environment-id', {
+      alias: 'e',
+      describe: 'id of the environment within the space',
+      type: 'string',
+      requiresArg: true,
+      default: 'master'
+    })
     .option('danger-will-robinson-danger', {
       describe: 'delete all current migrations and create already-applied states for all content types in space'
     });
 };
 
-exports.handler = ({ spaceId, dangerWillRobinsonDanger, accessToken }) => {
+exports.handler = (args) => {
+  const {
+    environmentId,
+    spaceId,
+    dangerWillRobinsonDanger,
+    accessToken
+  } = args;
   const migrationsDirectory = path.join('.', 'migrations');
 
   if (dangerWillRobinsonDanger) {
@@ -53,11 +66,11 @@ exports.handler = ({ spaceId, dangerWillRobinsonDanger, accessToken }) => {
         process.exit(1);
       }
       console.log(chalk.bold.green('🤞  May the 🐴 be with you'));
-      bootstrap(spaceId, accessToken, migrationsDirectory, dangerWillRobinsonDanger);
+      bootstrap(spaceId, environmentId, accessToken, migrationsDirectory, dangerWillRobinsonDanger);
     });
     /* eslint-enable no-console */
   } else {
-    bootstrap(spaceId, accessToken, migrationsDirectory);
+    bootstrap(spaceId, environmentId, accessToken, migrationsDirectory);
   }
 };
 
