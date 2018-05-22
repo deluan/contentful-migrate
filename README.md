@@ -6,7 +6,7 @@
 Manage your Contentful schema by creating incremental scripted changes. This project is based on the ideas exposed 
 in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/) 
 
-Scripts are written using Contentful's [migration-cli](https://github.com/contentful/migration-cli) syntax. Ex:
+Scripts are written using [Contentful's migration tool](https://github.com/contentful/contentful-migration) syntax. Ex:
 
 ```javascript
   module.exports.description = 'Create Post model';
@@ -180,7 +180,7 @@ for the specified content-type from the specified space.
 ## Writing Migrations
 
 For more information on how to write migrations, see 
-[Contentful migrations documentation](https://github.com/contentful/migration-cli#reference-documentation)
+[Contentful migrations documentation](https://github.com/contentful/contentful-migration#reference-documentation)
 
 This tool is based on [node-migrate](https://github.com/tj/node-migrate). For more 
 information on how to run migrations, see [Running migrations](https://github.com/tj/node-migrate#running-migrations)
