@@ -29,7 +29,7 @@ Scripts are written using [Contentful's migration tool](https://github.com/conte
   };
 ```
 
-This tool is designed to keep track of changes of content types individually. It keeps the 
+This command line tool is designed to keep track of changes of content types individually. It keeps the 
 scripts in a `migrations` folder in your project. This folder must contain one subfolder for each 
 content type. Ex:
 
@@ -50,7 +50,7 @@ your-project
 ``` 
 
 For more information on schema migrations technique and practice, see:
-* [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html#AllDatabaseChangesAreMigrations)
+* [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html)
 * [Schema migration](https://en.wikipedia.org/wiki/Schema_migration)
 
 ## Installation
@@ -85,6 +85,7 @@ used to keep track of the current state of each managed content type.
   
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
     -s, --space-id [space-id]          space id to use
+    -e, --environment-id [env-id]      id of the environment within the space (default 'master')
 ```
 
 If the target space already has been init'd before, it will throw an error:
