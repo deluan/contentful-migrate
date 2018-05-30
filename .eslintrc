@@ -1,9 +1,25 @@
 {
-  "extends": "@telusdigital/eslint-config",
+  "extends": "@contentful/backend",
+  "root": true,
   "rules": {
-    "semi": [ "error", "always"]
+    "max-len": [
+      2,
+      120,
+      {
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ]
   },
+  "overrides": [
+    {
+      "files": "*.spec.js",
+      "rules": {
+        "max-nested-callbacks": "off"
+      }
+    }
+  ],
   "env": {
-    mocha: true
+    "mocha": true
   }
 }
