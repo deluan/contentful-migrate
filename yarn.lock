@@ -431,9 +431,9 @@ contentful-management@^5.0.0:
     contentful-sdk-core "^6.0.0-beta1"
     lodash "^4.17.10"
 
-contentful-migration@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-0.9.0.tgz#9f530feab79c87bcd222cf68d146703a40b9ad66"
+contentful-migration@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-0.10.0.tgz#b64a01d449628169d992f1c1942f8a84b90d049f"
   dependencies:
     bluebird "^3.5.0"
     callsites "^2.0.0"
