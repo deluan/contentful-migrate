@@ -181,7 +181,7 @@ for the specified content-type from the specified space.
 ## Writing Migrations
 
 For more information on how to write migrations, see 
-[Contentful migrations documentation](https://github.com/contentful/contentful-migration#reference-documentation)
+[Contentful migrations documentation](https://github.com/contentful/contentful-migration#documentation--references)
 
 This tool is based on [node-migrate](https://github.com/tj/node-migrate). For more 
 information on how to run migrations, see [Running migrations](https://github.com/tj/node-migrate#running-migrations)
