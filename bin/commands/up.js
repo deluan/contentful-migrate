@@ -111,6 +111,7 @@ exports.handler = async (args) => {
     })
     .catch((err) => {
       log.error('error', err);
-      console.log(chalk.bold.red(`\n🚨  Error applying migrations in ${environmentId}! See above for error message`));
+      console.log(chalk.bold.red(`\n🚨  Error applying migrations to "${environmentId}" environment! See above for error messages`));
+      process.exit(1);
     });
 };
