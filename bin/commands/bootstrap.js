@@ -36,8 +36,28 @@ exports.builder = (yargs) => {
       requiresArg: true,
       default: 'master'
     })
+    .option('content-type', {
+      alias: 'c',
+      describe: 'one or more content type names to process',
+      array: true,
+      default: []
+    })
+    .option('all', {
+      alias: 'a',
+      describe: 'lists migrations for all content types',
+      boolean: true
+    })
     .option('danger-will-robinson-danger', {
       describe: 'delete all current migrations and create already-applied states for all content types in space'
+    })
+    .check((argv) => {
+      if (argv.a && argv.c.length > 0) {
+        return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
+      }
+      if (!argv.a && argv.c.length === 0) {
+        return 'At least one of \'all\' or \'content-type\' options must be specified';
+      }
+      return true;
     });
 };
 
@@ -45,11 +65,11 @@ exports.handler = (args) => {
   const {
     environmentId,
     spaceId,
+    contentType,
     dangerWillRobinsonDanger,
     accessToken
   } = args;
   const migrationsDirectory = path.join('.', 'migrations');
-
   if (dangerWillRobinsonDanger) {
     const rl = readline.createInterface({
       input: process.stdin,
@@ -66,11 +86,10 @@ exports.handler = (args) => {
         process.exit(1);
       }
       console.log(chalk.bold.green('🤞  May the 🐴 be with you'));
-      bootstrap(spaceId, environmentId, accessToken, migrationsDirectory, dangerWillRobinsonDanger);
+      bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, dangerWillRobinsonDanger);
     });
     /* eslint-enable no-console */
   } else {
-    bootstrap(spaceId, environmentId, accessToken, migrationsDirectory);
+    bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory);
   }
 };
-
