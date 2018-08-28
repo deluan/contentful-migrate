@@ -423,12 +423,12 @@ contentful-management@^4.0.3:
     contentful-sdk-core "^5.0.4"
     lodash "^4.17.4"
 
-contentful-management@^5.0.0:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.1.3.tgz#b7ffba9de7c28df4d5bb670bb397da63a0fe51c6"
+contentful-management@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.3.2.tgz#566fa2971c0c1eb30b5c01d3f3268f876ddb91d2"
   dependencies:
     "@contentful/axios" "^0.18.0"
-    contentful-sdk-core "^6.0.0-beta1"
+    contentful-sdk-core "^6.0.1"
     lodash "^4.17.10"
 
 contentful-migration@^0.10.0:
@@ -457,12 +457,12 @@ contentful-sdk-core@^5.0.4:
     lodash "^4.17.4"
     qs "^6.5.1"
 
-contentful-sdk-core@^6.0.0-beta1:
-  version "6.0.0-beta1"
-  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-6.0.0-beta1.tgz#4d45c7e90ed71dffcd25448ef9617d73b6e28484"
+contentful-sdk-core@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-6.0.1.tgz#522a8e928fccbc0a5ecb2163782c6aae28173623"
   dependencies:
-    lodash "^4.17.4"
-    qs "^6.5.1"
+    lodash "^4.17.10"
+    qs "^6.5.2"
 
 conventional-changelog-angular@^1.3.3:
   version "1.6.6"
@@ -1671,7 +1671,7 @@ q@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
-qs@^6.5.1:
+qs@^6.5.1, qs@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
