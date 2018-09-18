@@ -143,7 +143,7 @@ applied and when.
     -a, --all                          lists migrations for all content types
 ```
 
-Exemple:
+Example:
 ```bash
 $ ctf-migrate list -s i2ztmmsocxul -c post banner
 Listing post
