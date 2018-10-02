@@ -76,7 +76,7 @@ exports.handler = (args) => {
       output: process.stdout
     });
     /* eslint-disable no-console */
-    console.log(chalk.bold.red('🚨  What you are about to do is desctructive!'));
+    console.log(chalk.bold.red('🚨  What you are about to do is destructive!'));
     console.log(chalk.bold.red('    It will delete all existing scripts in the migrations folder.'));
     console.log(chalk.bold.red(`    And mutate all migration state for every content type in space ${spaceId}`));
     rl.question(chalk.bold.yellow('⚠️   Are you sure you want to proceed? y/N: '), (answer) => {
