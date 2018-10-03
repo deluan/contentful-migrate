@@ -70,7 +70,20 @@ exports.handler = (args) => {
     accessToken
   } = args;
   const migrationsDirectory = path.join('.', 'migrations');
-  if (dangerWillRobinsonDanger) {
+  if (contentType.length > 0) {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+    rl.question(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ${contentType}? y/N: `), (answer) => {
+      rl.close();
+      if (answer === 'y' || answer === 'yes') {
+        bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, true);
+      } else {
+        bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory);
+      }
+    });
+  } else if (dangerWillRobinsonDanger) {
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout

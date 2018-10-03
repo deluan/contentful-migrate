@@ -104,7 +104,7 @@ Create your first migration file for content models in your space. Use the `--da
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
     -s, --space-id [space-id]          space id to use
     -e, --environment-id [env-id]      id of the environment within the space (default 'master')
-    -c, --content-type [content-type]  one or more content type to bootstrap
+    -c, --content-type [content-type]  one or more content type to bootstrap with choice to overwrite migration state
     -a, --all                          apply bootstrap to all
     --danger-will-robinson-danger
 ```
