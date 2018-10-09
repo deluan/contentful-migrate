@@ -47,9 +47,6 @@ exports.builder = (yargs) => {
       describe: 'lists migrations for all content types',
       boolean: true
     })
-    .option('danger-will-robinson-danger', {
-      describe: 'delete all current migrations and create already-applied states for all content types in space'
-    })
     .check((argv) => {
       if (argv.a && argv.c.length > 0) {
         return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
@@ -61,48 +58,42 @@ exports.builder = (yargs) => {
     });
 };
 
-exports.handler = (args) => {
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const asyncQuestion = (question) => {
+  return new Promise((resolve) => {
+    rl.question(question, (response) => {
+      resolve(response);
+    });
+  });
+};
+
+const isYes = response => response === 'y' || response === 'yes';
+
+exports.handler = async (args) => {
   const {
     environmentId,
     spaceId,
     contentType,
-    dangerWillRobinsonDanger,
     accessToken
   } = args;
   const migrationsDirectory = path.join('.', 'migrations');
+  let writeMigrationState = false;
   if (contentType.length > 0) {
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    });
-    rl.question(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ${contentType}? y/N: `), (answer) => {
-      rl.close();
-      if (answer === 'y' || answer === 'yes') {
-        bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, true);
-      } else {
-        bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory);
-      }
-    });
-  } else if (dangerWillRobinsonDanger) {
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    });
-    /* eslint-disable no-console */
-    console.log(chalk.bold.red('🚨  What you are about to do is destructive!'));
-    console.log(chalk.bold.red('    It will delete all existing scripts in the migrations folder.'));
-    console.log(chalk.bold.red(`    And mutate all migration state for every content type in space ${spaceId}`));
-    rl.question(chalk.bold.yellow('⚠️   Are you sure you want to proceed? y/N: '), (answer) => {
-      rl.close();
-      if (!(answer === 'y' || answer === 'yes')) {
-        console.log(chalk.bold.yellow('⚠️   Aborted Bootstrap'));
-        process.exit(1);
-      }
-      console.log(chalk.bold.green('🤞  May the 🐴 be with you'));
-      bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, dangerWillRobinsonDanger);
-    });
-    /* eslint-enable no-console */
+    const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ${contentType}? y/N: `));
+    writeMigrationState = isYes(answer);
   } else {
-    bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory);
+    const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for all content types? y/N: `));
+    if (isYes(answer)) {
+      console.log(chalk.bold.red('🚨  What you are about to do is destructive!'));
+      console.log(chalk.bold.red(`    And mutate all migration state for every content type in space ${spaceId}`));
+      const confirmation = await asyncQuestion(chalk.bold.yellow(`⚠️   Are you sure you want to proceed? y/N: `));
+      writeMigrationState = isYes(confirmation);
+    }
   }
+  rl.close();
+  bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, writeMigrationState);
 };
