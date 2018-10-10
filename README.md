@@ -94,7 +94,8 @@ If the target space already has been init'd before, it will throw an error:
 
 ### bootstrap
 
-Create your first migration file for content models in your space. Use the `--danger-will-robinson-danger` option to squash any previous migration state and scripts.
+Create your migration files for content models already in your space. It gives you the option to squash any previous migration state.
+Note: It will delete any existing migration scripts and create a consolidated one for each specified content type.
 
 ```
   Usage: ctf-migrate bootstrap [options]
@@ -105,8 +106,7 @@ Create your first migration file for content models in your space. Use the `--da
     -s, --space-id [space-id]          space id to use
     -e, --environment-id [env-id]      id of the environment within the space (default 'master')
     -c, --content-type [content-type]  one or more content type to bootstrap with choice to overwrite migration state
-    -a, --all                          apply bootstrap to all
-    --danger-will-robinson-danger
+    -a, --all                          apply bootstrap to all with choice to overwrite migration state
 ```
 
 Example: executing the command `ctf-migrate bootstrap -c post -s <space-id>` will create a file where the `up` command will generate the exact snapshot of the `Post` content model
