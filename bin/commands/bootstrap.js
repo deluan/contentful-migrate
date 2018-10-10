@@ -86,10 +86,10 @@ exports.handler = async (args) => {
     const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ${contentType}? y/N: `));
     writeMigrationState = isYes(answer);
   } else {
-    const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for all content types? y/N: `));
+    const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ALL content types? y/N: `));
     if (isYes(answer)) {
       console.log(chalk.bold.red('🚨  What you are about to do is destructive!'));
-      console.log(chalk.bold.red(`    And mutate all migration state for every content type in space ${spaceId}`));
+      console.log(chalk.bold.red(`    It will mutate all migration state for every content type in space ${spaceId}`));
       const confirmation = await asyncQuestion(chalk.bold.yellow(`⚠️   Are you sure you want to proceed? y/N: `));
       writeMigrationState = isYes(confirmation);
     }
