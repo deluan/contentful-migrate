@@ -95,5 +95,5 @@ exports.handler = async (args) => {
     }
   }
   rl.close();
-  bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, writeMigrationState);
+  await bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, writeMigrationState);
 };
