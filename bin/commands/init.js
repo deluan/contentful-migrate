@@ -34,7 +34,7 @@ exports.builder = (yargs) => {
       default: 'master'
     })
     .option('multiple-folders', {
-      describe: 'allows managing group of migrations in multiple folders',
+      describe: 'allows grouping migration scripts in sub-folders',
       type: 'boolean',
       default: false
     })
