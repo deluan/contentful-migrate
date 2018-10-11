@@ -35,26 +35,6 @@ exports.builder = (yargs) => {
       type: 'string',
       requiresArg: true,
       default: 'master'
-    })
-    .option('content-type', {
-      alias: 'c',
-      describe: 'one or more content type names to list',
-      array: true,
-      default: []
-    })
-    .option('all', {
-      alias: 'a',
-      describe: 'lists migrations for all content types',
-      boolean: true
-    })
-    .check((argv) => {
-      if (argv.a && argv.c.length > 0) {
-        return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
-      }
-      if (!argv.a && argv.c.length === 0) {
-        return 'At least one of \'all\' or \'content-type\' options must be specified';
-      }
-      return true;
     });
 };
 
@@ -65,7 +45,7 @@ exports.handler = async ({
 
   const listSet = (set) => {
     // eslint-disable-next-line no-console
-    console.log(chalk.bold.blue('Listing'), set.store.contentTypeID);
+    console.log(chalk.bold.blue('Listing'), set.store.entryId);
     if (set.migrations.length === 0) {
       log('list', 'No Migrations');
     }
