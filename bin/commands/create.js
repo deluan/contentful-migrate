@@ -13,21 +13,14 @@ exports.desc =
 
 exports.builder = (yargs) => {
   yargs
-    .option('content-type', {
-      alias: 'c',
-      describe: 'content type name',
-      type: 'string',
-      requiresArg: true,
-      demandOption: true
-    })
     .positional('name', {
       describe: 'descriptive name for the migration file',
       type: 'string'
     });
 };
 
-exports.handler = ({ name, contentType }) => {
-  const migrationsDirectory = path.join('.', 'migrations', contentType);
+exports.handler = ({ name }) => {
+  const migrationsDirectory = path.join('.', 'migrations');
   const templateFile = path.join(__dirname, '..', '..', 'lib', 'template.js');
 
   generator({
