@@ -39,17 +39,6 @@ exports.builder = (yargs) => {
       requiresArg: true,
       default: 'master'
     })
-    .option('content-type', {
-      alias: 'c',
-      describe: 'one or more content type names to process',
-      array: true,
-      default: []
-    })
-    .option('all', {
-      alias: 'a',
-      describe: 'processes migrations for all content types',
-      boolean: true
-    })
     .option('dry-run', {
       alias: 'd',
       describe: 'only shows the planned actions, don\'t write anything to Contentful',
@@ -59,18 +48,6 @@ exports.builder = (yargs) => {
     .positional('file', {
       describe: 'If specified, applies all pending migrations scripts up to this one.',
       type: 'string'
-    })
-    .check((argv) => {
-      if (argv.a && argv.c.length > 0) {
-        return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
-      }
-      if (!argv.a && argv.c.length === 0) {
-        return 'At least one of \'all\' or \'content-type\' options must be specified';
-      }
-      if (argv.a && argv.file) {
-        return '[file] cannot be specified together with \'all\' option';
-      }
-      return true;
     });
 };
 
@@ -79,7 +56,6 @@ const runMigrationsAsync = promisify(runMigrations);
 exports.handler = async (args) => {
   const {
     accessToken,
-    contentType,
     dryRun,
     environmentId,
     file,
@@ -88,16 +64,11 @@ exports.handler = async (args) => {
 
   const migrationsDirectory = path.join('.', 'migrations');
 
-  const processSet = async (set) => {
-    console.log(chalk.bold.blue('Processing'), set.store.contentTypeID);
-    await runMigrationsAsync(set, 'up', file);
-    log('All migrations applied for', `${set.store.contentTypeID}`);
-  };
+  const processSet = set => runMigrationsAsync(set, 'up', file);
 
   // Load in migrations
   const sets = await load({
     accessToken,
-    contentTypes: contentType,
     dryRun,
     environmentId,
     migrationsDirectory,
@@ -107,7 +78,7 @@ exports.handler = async (args) => {
   // TODO concurrency can be an cmdline option? I set it to 1 for now to make logs more readable
   pMap(sets, processSet, { concurrency: 1 })
     .then(() => {
-      console.log(chalk.bold.yellow(`\n🎉  All content types in ${environmentId} are up-to-date`));
+      console.log(chalk.bold.yellow(`\n🎉  All migrations are applied to ${environmentId} environment`));
     })
     .catch((err) => {
       log.error('error', err);
