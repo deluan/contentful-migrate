@@ -5,6 +5,7 @@ const path = require('path');
 const chalk = require('chalk');
 const log = require('migrate/lib/log');
 const generator = require('migrate/lib/template-generator');
+const { isConsolidated } = require('../../lib/config');
 
 exports.command = 'create <name>';
 
@@ -17,10 +18,19 @@ exports.builder = (yargs) => {
       describe: 'descriptive name for the migration file',
       type: 'string'
     });
+
+  if (!isConsolidated()) {
+    yargs.option('folder', {
+      alias: 'f',
+      describe: 'migrations sub-folder',
+      type: 'string',
+      demandOption: true
+    });
+  }
 };
 
-exports.handler = ({ name }) => {
-  const migrationsDirectory = path.join('.', 'migrations');
+exports.handler = ({ name, folder = '' }) => {
+  const migrationsDirectory = path.join('.', 'migrations', folder);
   const templateFile = path.join(__dirname, '..', '..', 'lib', 'template.js');
 
   generator({
