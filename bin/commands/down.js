@@ -5,6 +5,7 @@ const path = require('path');
 const runMigrations = require('migrate/lib/migrate');
 const log = require('migrate/lib/log');
 const load = require('../../lib/load');
+const { isConsolidated } = require('../../lib/config');
 
 exports.command = 'down [file]';
 
@@ -45,12 +46,21 @@ exports.builder = (yargs) => {
       describe: 'If specified, rollback all migrations scripts down to this one.',
       type: 'string'
     });
+
+  if (!isConsolidated()) {
+    yargs
+      .option('folder', {
+        alias: 'f',
+        describe: 'single migrations sub-folder to process',
+        demandOption: true
+      });
+  }
 };
 
 exports.handler = async (args) => {
   const {
     accessToken,
-    contentType,
+    folder,
     dryRun,
     environmentId,
     file,
@@ -75,7 +85,7 @@ exports.handler = async (args) => {
 
   // Load in migrations
   const sets = await load({
-    migrationsDirectory, spaceId, environmentId, accessToken, dryRun, contentTypes: [contentType]
+    migrationsDirectory, spaceId, environmentId, accessToken, dryRun, folders: folder ? [folder] : undefined
   });
 
   sets.forEach(set => set
