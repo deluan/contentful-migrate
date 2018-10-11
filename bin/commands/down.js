@@ -35,11 +35,6 @@ exports.builder = (yargs) => {
       requiresArg: true,
       default: 'master'
     })
-    .option('content-type', {
-      alias: 'c',
-      describe: 'single content type name to process',
-      demandOption: true
-    })
     .option('dry-run', {
       alias: 'd',
       describe: 'only shows the planned actions, don\'t write anything to Contentful',
