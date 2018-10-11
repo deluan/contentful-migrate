@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // vim: set ft=javascript:
 
+const { initialize } = require('../../lib/config');
 const { initSpace } = require('../../lib/store');
 
 exports.command = 'init';
@@ -31,9 +32,16 @@ exports.builder = (yargs) => {
       type: 'string',
       requiresArg: true,
       default: 'master'
-    });
+    })
+    .option('multiple-folders', {
+      describe: 'allows managing group of migrations in multiple folders',
+      type: 'boolean',
+      default: false
+    })
+  ;
 };
 
-exports.handler = async ({ accessToken, spaceId, environmentId }) => {
-  return initSpace(accessToken, spaceId, environmentId);
+exports.handler = async ({ accessToken, spaceId, environmentId, multipleFolders}) => {
+  await initSpace(accessToken, spaceId, environmentId);
+  return initialize(!multipleFolders);
 };
