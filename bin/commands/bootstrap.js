@@ -58,19 +58,6 @@ exports.builder = (yargs) => {
     });
 };
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-const asyncQuestion = (question) => {
-  return new Promise((resolve) => {
-    rl.question(question, (response) => {
-      resolve(response);
-    });
-  });
-};
-
 const isYes = response => response === 'y' || response === 'yes';
 
 exports.handler = async (args) => {
@@ -80,6 +67,20 @@ exports.handler = async (args) => {
     contentType,
     accessToken
   } = args;
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  const asyncQuestion = (question) => {
+    return new Promise((resolve) => {
+      rl.question(question, (response) => {
+        resolve(response);
+      });
+    });
+  };
+
   const migrationsDirectory = path.join('.', 'migrations');
   let writeMigrationState = false;
   if (contentType.length > 0) {
