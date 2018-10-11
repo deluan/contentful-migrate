@@ -6,6 +6,7 @@ const chalk = require('chalk');
 const dateFormat = require('dateformat');
 const log = require('migrate/lib/log');
 const load = require('../../lib/load');
+const { isConsolidated } = require('../../lib/config');
 
 exports.command = 'list';
 
@@ -36,10 +37,34 @@ exports.builder = (yargs) => {
       requiresArg: true,
       default: 'master'
     });
+
+  if (!isConsolidated()) {
+    yargs
+      .option('folder', {
+        alias: 'f',
+        describe: 'one or more migrations sub-folders to list',
+        array: true,
+        default: []
+      })
+      .option('all', {
+        alias: 'a',
+        describe: 'lists migrations for all sub-folders',
+        boolean: true
+      })
+      .check((argv) => {
+        if (argv.a && argv.folder.length > 0) {
+          return 'Arguments \'folder\' and \'all\' are mutually exclusive';
+        }
+        if (!argv.a && argv.folder.length === 0) {
+          return 'At least one of \'all\' or \'folder\' options must be specified';
+        }
+        return true;
+      });
+  }
 };
 
 exports.handler = async ({
-  spaceId, environmentId, contentType, accessToken
+  spaceId, environmentId, folder, all, accessToken
 }) => {
   const migrationsDirectory = path.join('.', 'migrations');
 
@@ -63,7 +88,7 @@ exports.handler = async ({
   // Load in migrations
   const sets = await load({
     accessToken,
-    contentTypes: contentType,
+    folders: all ? [] : folder,
     dryRun: false,
     environmentId,
     migrationsDirectory,
