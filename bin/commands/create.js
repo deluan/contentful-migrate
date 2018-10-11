@@ -19,7 +19,7 @@ exports.builder = (yargs) => {
       type: 'string'
     });
 
-  if (!isConsolidated()) {
+  if (!isConsolidated) {
     yargs.option('folder', {
       alias: 'f',
       describe: 'migrations sub-folder',

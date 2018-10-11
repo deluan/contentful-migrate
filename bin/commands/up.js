@@ -51,7 +51,7 @@ exports.builder = (yargs) => {
       type: 'string'
     });
 
-  if (!isConsolidated()) {
+  if (!isConsolidated) {
     yargs
       .option('folder', {
         alias: 'f',
@@ -97,7 +97,7 @@ exports.handler = async (args) => {
   const processSet = async (set) => {
     console.log(chalk.bold.blue('Processing'), set.store.entryId);
     await runMigrationsAsync(set, 'up', file);
-    if (!isConsolidated()) {
+    if (!isConsolidated) {
       log('All migrations applied for', `${set.store.entryId}`);
     }
   };

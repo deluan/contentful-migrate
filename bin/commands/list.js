@@ -38,7 +38,7 @@ exports.builder = (yargs) => {
       default: 'master'
     });
 
-  if (!isConsolidated()) {
+  if (!isConsolidated) {
     yargs
       .option('folder', {
         alias: 'f',
