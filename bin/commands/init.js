@@ -41,7 +41,7 @@ exports.builder = (yargs) => {
   ;
 };
 
-exports.handler = async ({ accessToken, spaceId, environmentId, multipleFolders}) => {
+exports.handler = async ({ accessToken, spaceId, environmentId, multipleFolders }) => {
   await initSpace(accessToken, spaceId, environmentId);
   return initialize(!multipleFolders);
 };
