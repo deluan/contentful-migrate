@@ -65,7 +65,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "listr": "^0.13.0",
-    "lodash": "^4.17.5",
+    "lodash.reduce": "^4.6.0",
     "migrate": "^1.0.0",
     "mkdirp": "^0.5.1",
     "p-map": "^1.2.0",
