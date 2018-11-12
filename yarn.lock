@@ -415,13 +415,13 @@ contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
 
-contentful-management@^4.0.3:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-4.2.2.tgz#4be4a91b9a6c9c6970ea6905a6d032875ed898a4"
+contentful-management@^5.3.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.4.0.tgz#1f04448f3a76cea0897289e6e0e454bf12f70c5f"
   dependencies:
     "@contentful/axios" "^0.18.0"
-    contentful-sdk-core "^5.0.4"
-    lodash "^4.17.4"
+    contentful-sdk-core "^6.0.2"
+    lodash "^4.17.11"
 
 contentful-management@^5.3.2:
   version "5.3.2"
@@ -431,15 +431,15 @@ contentful-management@^5.3.2:
     contentful-sdk-core "^6.0.1"
     lodash "^4.17.10"
 
-contentful-migration@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-0.10.0.tgz#b64a01d449628169d992f1c1942f8a84b90d049f"
+contentful-migration@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-0.15.0.tgz#df0b4fe7a9af36348917ee98397422310b898a8b"
   dependencies:
     bluebird "^3.5.0"
     callsites "^2.0.0"
     cardinal "^1.0.0"
     chalk "^2.2.0"
-    contentful-management "^4.0.3"
+    contentful-management "^5.3.0"
     didyoumean2 "^1.3.0"
     hoek "^4.2.1"
     https-proxy-agent "^2.1.0"
@@ -450,16 +450,16 @@ contentful-migration@^0.10.0:
     lodash "^4.17.4"
     yargs "^8.0.2"
 
-contentful-sdk-core@^5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-5.0.4.tgz#9bf74775a56bfeb311e772f08ef55daad05ee116"
-  dependencies:
-    lodash "^4.17.4"
-    qs "^6.5.1"
-
 contentful-sdk-core@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-6.0.1.tgz#522a8e928fccbc0a5ecb2163782c6aae28173623"
+  dependencies:
+    lodash "^4.17.10"
+    qs "^6.5.2"
+
+contentful-sdk-core@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-6.0.2.tgz#3156a0115b37b216da7336af3686b587c14ef5bf"
   dependencies:
     lodash "^4.17.10"
     qs "^6.5.2"
@@ -1333,6 +1333,10 @@ lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
+lodash@^4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
 log-symbols@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
@@ -1675,7 +1679,7 @@ q@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
-qs@^6.5.1, qs@^6.5.2:
+qs@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
