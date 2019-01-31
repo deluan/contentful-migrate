@@ -420,26 +420,19 @@ contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
 
-contentful-management@^5.3.0:
+contentful-management@^5.3.0, contentful-management@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.4.0.tgz#1f04448f3a76cea0897289e6e0e454bf12f70c5f"
+  integrity sha512-iZ+yh1Rr5Xs7eAfulhx1nqoYfT0PWo6JaIaICFYnlARLxu/31itUwNRDHJMRMm1YS43dCtjrmSHSB/tJk/yJnw==
   dependencies:
     "@contentful/axios" "^0.18.0"
     contentful-sdk-core "^6.0.2"
     lodash "^4.17.11"
 
-contentful-management@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.3.2.tgz#566fa2971c0c1eb30b5c01d3f3268f876ddb91d2"
-  dependencies:
-    "@contentful/axios" "^0.18.0"
-    contentful-sdk-core "^6.0.1"
-    lodash "^4.17.10"
-
-contentful-migration@^0.15.3:
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-0.15.3.tgz#5691ed3b5a34a4c2664f73b2c4c3bc01c15462fe"
-  integrity sha512-FR6AQyy4O8cH09BU7uRJMEvWu0GE4ipFXWjPWnlEDxtgQFiYv7reAFWYFELNAuR2ju3qLKNeLY7PD8QGVgCxYw==
+contentful-migration@^0.16.6:
+  version "0.16.6"
+  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-0.16.6.tgz#ffb51ec377ce40d7d3c94b20d3d2614b68e080cd"
+  integrity sha512-w4iqTtCKUyXQyFDXUuLrxiPGMOhHV4WYqgiWkWP6awglzal8eGENBe22LPuhUJ8ZPUypxYiCEGl+QOUxEyfCKg==
   dependencies:
     bluebird "^3.5.0"
     callsites "^2.0.0"
@@ -455,13 +448,6 @@ contentful-migration@^0.15.3:
     listr "^0.12.0"
     lodash "^4.17.4"
     yargs "^8.0.2"
-
-contentful-sdk-core@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-6.0.1.tgz#522a8e928fccbc0a5ecb2163782c6aae28173623"
-  dependencies:
-    lodash "^4.17.10"
-    qs "^6.5.2"
 
 contentful-sdk-core@^6.0.2:
   version "6.0.2"
