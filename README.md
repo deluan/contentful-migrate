@@ -55,15 +55,8 @@ For more information on schema migrations technique and practice, see:
 
 ## Installation
 
-Using [npm](http://npmjs.org):
-
 ``` sh
 npm install -g contentful-migrate
-```
-
-Using [yarn](https://yarnpkg.com):
-``` sh
-yarn global add contentful-migrate
 ```
 
 ## Usage

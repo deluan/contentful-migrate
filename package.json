@@ -16,15 +16,15 @@
   },
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "precommit": "yarn test",
-    "test": "yarn run lint && yarn run test:unit",
-    "test:ci": "yarn run lint && yarn run test:all",
+    "precommit": "npm test",
+    "test": "npm run lint && npm run test:unit",
+    "test:ci": "npm run lint && npm run test:all",
     "test:all": "mocha lib/__tests__/*.spec.js lib/**/__tests__/*.spec.js",
-    "test:unit": "yarn test:all --grep @integration --invert",
-    "test:integration": "yarn test:all --grep @integration",
-    "test:watch": "yarn test:unit --watch --growl",
+    "test:unit": "npm run test:all --grep @integration --invert",
+    "test:integration": "npm run test:all --grep @integration",
+    "test:watch": "npm run test:unit --watch --growl",
     "lint": "eslint 'lib' 'bin' --ext .js --ignore-pattern lib/template.js --config .eslintrc",
-    "lint:fix": "yarn run lint --fix",
+    "lint:fix": "npm run lint --fix",
     "semver": "semver"
   },
   "repository": {
@@ -47,8 +47,6 @@
     "growl": "^1.10.5",
     "husky": "^0.14.3",
     "mocha": "^5.1.1",
-    "nsp": "^2.6.3",
-    "nsp-preprocessor-yarn": "^1.1.2",
     "semver": "^5.3.0"
   },
   "dependencies": {
