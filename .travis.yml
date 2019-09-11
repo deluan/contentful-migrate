@@ -1,7 +1,0 @@
-sudo: required
-language: node_js
-node_js:
-  - "8"
-script:
-  - yarn test:ci
-cache: yarn
