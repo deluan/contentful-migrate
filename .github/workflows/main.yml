@@ -12,16 +12,15 @@ jobs:
         node_version: [8, 10, 12]
 
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        version: ${{ matrix.node_version }}
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          version: ${{ matrix.node_version }}
 
-    - name: npm install, build and test
-      env:
-        CONTENTFUL_MANAGEMENT_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN }}
-        CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-        ORGANIZATION_ID: ${{ secrets.ORGANIZATION_ID }}
-      run: |
-        npm install
-        npm run test:ci
+      - name: npm install, build and test
+        env:
+          CONTENTFUL_INTEGRATION_MANAGEMENT_TOKEN: ${{ secrets.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN }}
+          CONTENTFUL_INTEGRATION_SOURCE_SPACE: ${{ secrets.CONTENTFUL_SPACE_ID }}
+        run: |
+          npm install
+          npm run test:ci
