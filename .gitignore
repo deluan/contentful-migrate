@@ -4,6 +4,7 @@
 .vscode
 .DS_Store
 .nvmrc
+.envrc
 node_modules
 migrations
 coverage

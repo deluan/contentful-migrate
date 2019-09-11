@@ -1,0 +1,29 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
+// https://github.com/microsoft/vscode-dev-containers/tree/master/containers/javascript-node-lts
+{
+	"name": "Node.js (latest LTS)",
+	"dockerFile": "Dockerfile",
+	"settings": {
+		"terminal.integrated.shell.linux": "/usr/bin/zsh",
+		"editor.formatOnSave": true,
+		"[javascript]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"[json]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		}
+	},
+	"runArgs": [
+		"--name",
+		"vsc-contentful-migrate",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro"
+	],
+	"postCreateCommand": "mkdir -p ~/.ssh && cp -r ~/.ssh-localhost/* ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/*",
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"gruntfuggly.todo-tree",
+		"eamodio.gitlens",
+		"esbenp.prettier-vscode"
+	]
+}
