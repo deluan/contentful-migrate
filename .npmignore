@@ -11,3 +11,4 @@ logo.png
 sonar-project.properties
 coverage
 .scannerwork
+.devcontainer
