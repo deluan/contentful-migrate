@@ -1,7 +1,7 @@
 # Contentful Migrate Tool
 
 [![npm](https://img.shields.io/npm/v/contentful-migrate.svg)](https://www.npmjs.com/package/contentful-migrate)
-[![Build Status](https://travis-ci.org/deluan/contentful-migrate.svg?branch=master)](https://travis-ci.org/deluan/contentful-migrate)
+[![Build Status](https://github.com/deluan/contentful-migrate/workflows/CI/badge.svg)](https://github.com/deluan/contentful-migrate/actions)
 
 Manage your Contentful schema by creating incremental scripted changes. This project is based on the ideas exposed
 in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/)
@@ -9,24 +9,26 @@ in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase
 Scripts are written using [Contentful's migration tool](https://github.com/contentful/contentful-migration) syntax. Ex:
 
 ```javascript
-  module.exports.description = 'Create Post model';
+module.exports.description = "Create Post model";
 
-  module.exports.up = (migration) => {
-    const post = migration.createContentType('post')
-      .name('Post')
-      .displayField('title')
-      .description('Post model');
+module.exports.up = migration => {
+  const post = migration
+    .createContentType("post")
+    .name("Post")
+    .displayField("title")
+    .description("Post model");
 
-    post.createField('title')
-      .name('Title')
-      .type('Symbol')
-      .required(true)
-      .localized(false);
-  };
+  post
+    .createField("title")
+    .name("Title")
+    .type("Symbol")
+    .required(true)
+    .localized(false);
+};
 
-  module.exports.down = (migration) => {
-    migration.deleteContentType('post');
-  };
+module.exports.down = migration => {
+  migration.deleteContentType("post");
+};
 ```
 
 This command line tool is designed to keep track of changes of content types individually. It keeps the
@@ -50,12 +52,13 @@ your-project
 ```
 
 For more information on schema migrations technique and practice, see:
-* [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html)
-* [Schema migration](https://en.wikipedia.org/wiki/Schema_migration)
+
+- [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html)
+- [Schema migration](https://en.wikipedia.org/wiki/Schema_migration)
 
 ## Installation
 
-``` sh
+```sh
 npm install -g contentful-migrate
 ```
 
@@ -137,6 +140,7 @@ applied and when.
 ```
 
 Example:
+
 ```bash
 $ ctf-migrate list -s i2ztmmsocxul -c post banner
 Listing post
@@ -146,6 +150,7 @@ Listing banner
   [2018-01-08 15:01:45] 20180103165614-create-banner.js : Create Banner model
   [2018-01-22 11:01:33] 20180111172942-add-subtitle-field.js: Add Subtitle field
 ```
+
 For the `post` model in this example, the first script (`create-post.js`) has already been applied but the
 second one (`add-title-field.js`) has not. For the `banner` model, all scripts have been applied.
 
@@ -169,11 +174,11 @@ the specified content-type into the specified space.
 
 ### down
 
-***ATTENTION**: As noted in the [CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/#how-to-get-started),
+**\*ATTENTION**: As noted in the [CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/#how-to-get-started),
 "in real-world situations there is often no real way to down migrate content without resorting to backups". Even though
 we agree with that assertion, we still think there is value in having a `down` function to make it easier to develop
 and debug the `up` migration scripts (when you're working on a dev/test space), as it makes it easy to revert your
-changes and try again, without resorting to any manual intervention.*
+changes and try again, without resorting to any manual intervention.\*
 
 Migrates down to a specific version or just the last one if filename is not informed. This will roll back applied scripts
 for the specified content-type from the specified space.

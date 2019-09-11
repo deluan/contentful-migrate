@@ -6,7 +6,7 @@
 node_modules
 openshift
 Jenkinsfile
-.travis.yml
+.github
 logo.png
 sonar-project.properties
 coverage
