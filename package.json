@@ -52,8 +52,8 @@
   "dependencies": {
     "@contentful/eslint-config-backend": "^5.0.0",
     "chalk": "^2.2.0",
-    "contentful-management": "^5.9.0",
-    "contentful-migration": "^0.19.2",
+    "contentful-management": "^5.10.2",
+    "contentful-migration": "^0.19.7",
     "dateformat": "^2.0.0",
     "eslint": "^4.6.1",
     "eslint-plugin-import": "^2.7.0",
