@@ -5,12 +5,12 @@
 	"dockerFile": "Dockerfile",
 	"settings": {
 		"terminal.integrated.shell.linux": "/usr/bin/zsh",
-		"editor.formatOnSave": true,
+		"editor.formatOnSave": false,
 		"[javascript]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
+			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
 		"[json]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
+			"editor.defaultFormatter": "vscode.json-language-features"
 		}
 	},
 	"runArgs": [
@@ -23,7 +23,6 @@
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"gruntfuggly.todo-tree",
-		"eamodio.gitlens",
-		"esbenp.prettier-vscode"
+		"eamodio.gitlens"
 	]
 }
