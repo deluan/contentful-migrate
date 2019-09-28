@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^4.2.1",
-    "@commitlint/config-angular": "^4.2.1",
+    "@commitlint/config-angular": "^8.2.0",
     "expect.js": "^0.3.1",
     "growl": "^1.10.5",
     "husky": "^0.14.3",
