@@ -55,7 +55,7 @@
     "semver": "^6.3.0"
   },
   "dependencies": {
-    "@contentful/eslint-config-backend": "^5.0.0",
+    "@contentful/eslint-config-backend": "^6.1.0",
     "chalk": "^2.2.0",
     "contentful-management": "^5.10.2",
     "contentful-migration": "^1.0.2",
