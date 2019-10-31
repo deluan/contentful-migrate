@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/contentful-migrate.svg)](https://www.npmjs.com/package/contentful-migrate)
 [![Build Status](https://github.com/deluan/contentful-migrate/workflows/CI/badge.svg)](https://github.com/deluan/contentful-migrate/actions)
+[![Downloads](https://img.shields.io/npm/dm/contentful-migrate)](https://www.npmjs.com/package/contentful-migrate)
 
 Manage your Contentful schema by creating incremental scripted changes. This project is based on the ideas exposed
 in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/)
