@@ -55,15 +55,15 @@
     "semver": "^6.3.0"
   },
   "dependencies": {
-    "@contentful/eslint-config-backend": "^5.0.0",
+    "@contentful/eslint-config-backend": "^6.1.0",
     "chalk": "^2.2.0",
     "contentful-management": "^5.10.2",
     "contentful-migration": "^1.0.2",
     "dateformat": "^3.0.3",
     "eslint": "^4.6.1",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-mocha": "^4.11.0",
-    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "listr": "^0.14.3",
