@@ -2,18 +2,18 @@
 // vim: set ft=javascript:
 /* eslint-disable no-console */
 
-const path = require('path');
-const { promisify } = require('util');
-const chalk = require('chalk');
-const pMap = require('p-map');
-const runMigrations = require('migrate/lib/migrate');
-const log = require('migrate/lib/log');
-const load = require('../../lib/load');
+const path = require('path')
+const { promisify } = require('util')
+const chalk = require('chalk')
+const pMap = require('p-map')
+const runMigrations = require('migrate/lib/migrate')
+const log = require('migrate/lib/log')
+const load = require('../../lib/load')
 
-exports.command = 'up [file]';
+exports.command = 'up [file]'
 
 exports.desc =
-  'Migrate up to a give migration or all pending if not specified';
+  'Migrate up to a give migration or all pending if not specified'
 
 exports.builder = (yargs) => {
   yargs
@@ -62,19 +62,19 @@ exports.builder = (yargs) => {
     })
     .check((argv) => {
       if (argv.a && argv.c.length > 0) {
-        return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
+        return 'Arguments \'content-type\' and \'all\' are mutually exclusive'
       }
       if (!argv.a && argv.c.length === 0) {
-        return 'At least one of \'all\' or \'content-type\' options must be specified';
+        return 'At least one of \'all\' or \'content-type\' options must be specified'
       }
       if (argv.a && argv.file) {
-        return '[file] cannot be specified together with \'all\' option';
+        return '[file] cannot be specified together with \'all\' option'
       }
-      return true;
-    });
-};
+      return true
+    })
+}
 
-const runMigrationsAsync = promisify(runMigrations);
+const runMigrationsAsync = promisify(runMigrations)
 
 exports.handler = async (args) => {
   const {
@@ -84,15 +84,15 @@ exports.handler = async (args) => {
     environmentId,
     file,
     spaceId
-  } = args;
+  } = args
 
-  const migrationsDirectory = path.join('.', 'migrations');
+  const migrationsDirectory = path.join('.', 'migrations')
 
   const processSet = async (set) => {
-    console.log(chalk.bold.blue('Processing'), set.store.contentTypeID);
-    await runMigrationsAsync(set, 'up', file);
-    log('All migrations applied for', `${set.store.contentTypeID}`);
-  };
+    console.log(chalk.bold.blue('Processing'), set.store.contentTypeID)
+    await runMigrationsAsync(set, 'up', file)
+    log('All migrations applied for', `${set.store.contentTypeID}`)
+  }
 
   // Load in migrations
   const sets = await load({
@@ -102,16 +102,16 @@ exports.handler = async (args) => {
     environmentId,
     migrationsDirectory,
     spaceId
-  });
+  })
 
   // TODO concurrency can be an cmdline option? I set it to 1 for now to make logs more readable
   pMap(sets, processSet, { concurrency: 1 })
     .then(() => {
-      console.log(chalk.bold.yellow(`\n🎉  All content types in ${environmentId} are up-to-date`));
+      console.log(chalk.bold.yellow(`\n🎉  All content types in ${environmentId} are up-to-date`))
     })
     .catch((err) => {
-      log.error('error', err);
-      console.log(chalk.bold.red(`\n🚨  Error applying migrations to "${environmentId}" environment! See above for error messages`));
-      process.exit(1);
-    });
-};
+      log.error('error', err)
+      console.log(chalk.bold.red(`\n🚨  Error applying migrations to "${environmentId}" environment! See above for error messages`))
+      process.exit(1)
+    })
+}

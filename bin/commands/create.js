@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 // vim: set ft=javascript:
 
-const path = require('path');
-const chalk = require('chalk');
-const log = require('migrate/lib/log');
-const generator = require('migrate/lib/template-generator');
+const path = require('path')
+const chalk = require('chalk')
+const log = require('migrate/lib/log')
+const generator = require('migrate/lib/template-generator')
 
-exports.command = 'create <name>';
+exports.command = 'create <name>'
 
 exports.desc =
-  'Creates an empty time stamped file in the content-type\'s migrations folder';
+  'Creates an empty time stamped file in the content-type\'s migrations folder'
 
 exports.builder = (yargs) => {
   yargs
@@ -23,12 +23,12 @@ exports.builder = (yargs) => {
     .positional('name', {
       describe: 'descriptive name for the migration file',
       type: 'string'
-    });
-};
+    })
+}
 
 exports.handler = ({ name, contentType }) => {
-  const migrationsDirectory = path.join('.', 'migrations', contentType);
-  const templateFile = path.join(__dirname, '..', '..', 'lib', 'template.js');
+  const migrationsDirectory = path.join('.', 'migrations', contentType)
+  const templateFile = path.join(__dirname, '..', '..', 'lib', 'template.js')
 
   generator({
     name,
@@ -38,9 +38,9 @@ exports.handler = ({ name, contentType }) => {
     extension: '.js'
   }, (error, filename) => {
     if (error) {
-      log(chalk.bold.red(`🚨 Template generation error ${error.message}`));
-      process.exit(1);
+      log(chalk.bold.red(`🚨 Template generation error ${error.message}`))
+      process.exit(1)
     }
-    log('🎉 created', filename);
-  });
-};
+    log('🎉 created', filename)
+  })
+}

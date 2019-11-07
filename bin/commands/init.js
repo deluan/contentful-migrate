@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // vim: set ft=javascript:
 
-const { initSpace } = require('../../lib/store');
+const { initSpace } = require('../../lib/store')
 
-exports.command = 'init';
+exports.command = 'init'
 
 exports.desc =
-  'Prepares the specified space to allow managed migration scripts.\nThe "Migration" content-type will be created in your contentful space';
+  'Prepares the specified space to allow managed migration scripts.\nThe "Migration" content-type will be created in your contentful space'
 
 exports.builder = (yargs) => {
   yargs
@@ -31,9 +31,9 @@ exports.builder = (yargs) => {
       type: 'string',
       requiresArg: true,
       default: 'master'
-    });
-};
+    })
+}
 
 exports.handler = async ({ accessToken, spaceId, environmentId }) => {
-  return initSpace(accessToken, spaceId, environmentId);
-};
+  return initSpace(accessToken, spaceId, environmentId)
+}

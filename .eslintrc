@@ -1,5 +1,5 @@
 {
-  "extends": "@contentful/backend",
+  "extends": "eslint-config-standard",
   "root": true,
   "rules": {
     "max-len": [

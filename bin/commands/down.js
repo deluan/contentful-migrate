@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 // vim: set ft=javascript:
 
-const path = require('path');
-const runMigrations = require('migrate/lib/migrate');
-const log = require('migrate/lib/log');
-const load = require('../../lib/load');
+const path = require('path')
+const runMigrations = require('migrate/lib/migrate')
+const log = require('migrate/lib/log')
+const load = require('../../lib/load')
 
-exports.command = 'down [file]';
+exports.command = 'down [file]'
 
 exports.desc =
-  'Migrate down to a given migration or just the last one if not specified';
+  'Migrate down to a given migration or just the last one if not specified'
 
 exports.builder = (yargs) => {
   yargs
@@ -49,8 +49,8 @@ exports.builder = (yargs) => {
     .positional('file', {
       describe: 'If specified, rollback all migrations scripts down to this one.',
       type: 'string'
-    });
-};
+    })
+}
 
 exports.handler = async (args) => {
   const {
@@ -60,33 +60,33 @@ exports.handler = async (args) => {
     environmentId,
     file,
     spaceId
-  } = args;
+  } = args
 
-  const migrationsDirectory = path.join('.', 'migrations');
+  const migrationsDirectory = path.join('.', 'migrations')
 
   const processSet = (set) => {
-    const name = (file) || set.lastRun;
+    const name = (file) || set.lastRun
 
     runMigrations(set, 'down', name, (error) => {
       if (error) {
-        log('error', error);
-        process.exit(1);
+        log('error', error)
+        process.exit(1)
       }
 
-      log('migration', 'complete');
-      process.exit(0);
-    });
-  };
+      log('migration', 'complete')
+      process.exit(0)
+    })
+  }
 
   // Load in migrations
   const sets = await load({
     migrationsDirectory, spaceId, environmentId, accessToken, dryRun, contentTypes: [contentType]
-  });
+  })
 
   sets.forEach(set => set
     .then(processSet)
     .catch((err) => {
-      log.error('error', err);
-      process.exit(1);
-    }));
-};
+      log.error('error', err)
+      process.exit(1)
+    }))
+}

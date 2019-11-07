@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 // vim: set ft=javascript:
 
-const chalk = require('chalk');
-const readline = require('readline');
-const path = require('path');
+const chalk = require('chalk')
+const readline = require('readline')
+const path = require('path')
 
-const bootstrap = require('../../lib/bootstrap');
+const bootstrap = require('../../lib/bootstrap')
 
-exports.command = 'bootstrap';
+exports.command = 'bootstrap'
 
 exports.desc =
-  'Takes a snapshot of existing space and automatically generate migration scripts';
+  'Takes a snapshot of existing space and automatically generate migration scripts'
 
 exports.builder = (yargs) => {
   yargs
@@ -49,16 +49,16 @@ exports.builder = (yargs) => {
     })
     .check((argv) => {
       if (argv.a && argv.c.length > 0) {
-        return 'Arguments \'content-type\' and \'all\' are mutually exclusive';
+        return 'Arguments \'content-type\' and \'all\' are mutually exclusive'
       }
       if (!argv.a && argv.c.length === 0) {
-        return 'At least one of \'all\' or \'content-type\' options must be specified';
+        return 'At least one of \'all\' or \'content-type\' options must be specified'
       }
-      return true;
-    });
-};
+      return true
+    })
+}
 
-const isYes = response => response === 'y' || response === 'yes';
+const isYes = response => response === 'y' || response === 'yes'
 
 exports.handler = async (args) => {
   const {
@@ -66,35 +66,35 @@ exports.handler = async (args) => {
     spaceId,
     contentType,
     accessToken
-  } = args;
+  } = args
 
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
-  });
+  })
 
   const asyncQuestion = (question) => {
     return new Promise((resolve) => {
       rl.question(question, (response) => {
-        resolve(response);
-      });
-    });
-  };
+        resolve(response)
+      })
+    })
+  }
 
-  const migrationsDirectory = path.join('.', 'migrations');
-  let writeMigrationState = false;
+  const migrationsDirectory = path.join('.', 'migrations')
+  let writeMigrationState = false
   if (contentType.length > 0) {
-    const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ${contentType}? y/N: `));
-    writeMigrationState = isYes(answer);
+    const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ${contentType}? y/N: `))
+    writeMigrationState = isYes(answer)
   } else {
-    const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ALL content types? y/N: `));
+    const answer = await asyncQuestion(chalk.bold.yellow('⚠️   Do you want to generate initial migration state for ALL content types? y/N: '))
     if (isYes(answer)) {
-      console.log(chalk.bold.red('🚨  What you are about to do is destructive!'));
-      console.log(chalk.bold.red(`    It will mutate all migration state for every content type in space ${spaceId}`));
-      const confirmation = await asyncQuestion(chalk.bold.yellow(`⚠️   Are you sure you want to proceed? y/N: `));
-      writeMigrationState = isYes(confirmation);
+      console.log(chalk.bold.red('🚨  What you are about to do is destructive!'))
+      console.log(chalk.bold.red(`    It will mutate all migration state for every content type in space ${spaceId}`))
+      const confirmation = await asyncQuestion(chalk.bold.yellow('⚠️   Are you sure you want to proceed? y/N: '))
+      writeMigrationState = isYes(confirmation)
     }
   }
-  rl.close();
-  await bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, writeMigrationState);
-};
+  rl.close()
+  await bootstrap(spaceId, environmentId, contentType, accessToken, migrationsDirectory, writeMigrationState)
+}
