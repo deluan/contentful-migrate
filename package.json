@@ -1,6 +1,6 @@
 {
   "name": "contentful-migrate",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Migration tooling for Contentful, with state management",
   "keywords": [
     "migrate",
