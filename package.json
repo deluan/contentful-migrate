@@ -15,7 +15,6 @@
     "ctf-migrate": "./bin/ctf-migrate"
   },
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "npm test",
     "test": "npm run lint && npm run test:unit",
     "test:ci": "npm run lint && npm run test:all",
@@ -40,19 +39,11 @@
     "url": "https://github.com/deluan/contentful-migrate/issues"
   },
   "homepage": "https://github.com/deluan/contentful-migrate#readme",
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-angular"
-    ]
-  },
   "devDependencies": {
-    "@commitlint/cli": "^4.2.1",
-    "@commitlint/config-angular": "^4.2.1",
     "expect.js": "^0.3.1",
     "growl": "^1.10.5",
     "husky": "^0.14.3",
-    "mocha": "^6.2.2",
-    "semver": "^6.3.0"
+    "mocha": "^6.2.2"
   },
   "dependencies": {
     "chalk": "^2.2.0",
