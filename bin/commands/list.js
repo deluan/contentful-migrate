@@ -6,6 +6,7 @@ const chalk = require('chalk')
 const dateFormat = require('dateformat')
 const log = require('migrate/lib/log')
 const load = require('../../lib/load')
+const registerCompiler = require('migrate/lib/register-compiler')
 
 exports.command = 'list'
 
@@ -42,6 +43,11 @@ exports.builder = (yargs) => {
       array: true,
       default: []
     })
+    .option('compiler', {
+      describe: 'compiler to add, e.g. "ts:./tsnode.js"',
+      type: 'string',
+      requiresArg: false
+    })
     .option('all', {
       alias: 'a',
       describe: 'lists migrations for all content types',
@@ -59,8 +65,12 @@ exports.builder = (yargs) => {
 }
 
 exports.handler = async ({
-  spaceId, environmentId, contentType, accessToken
+  spaceId, environmentId, contentType, accessToken, compiler
 }) => {
+  if (compiler) {
+    registerCompiler(compiler)
+  }
+
   const migrationsDirectory = path.join('.', 'migrations')
 
   const listSet = (set) => {
