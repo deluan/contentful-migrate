@@ -46,7 +46,7 @@
     "mocha": "^7.0.0"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "contentful-management": "^5.13.0",
     "contentful-migration": "1.0.20",
     "dateformat": "^3.0.3",
