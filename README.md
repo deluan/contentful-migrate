@@ -119,10 +119,12 @@ Creates an empty time stamped file in the content-type's migrations folder.
   Options:
 
     -c, --content-type <content-type>  content type name
+    -t, --migration-template <migration-template>  migration file template path
+    -e, --extension <extension>  generated migration file extension
 ```
 
-Example: executing the command `ctf-migrate create create-post-model -c post` will create
-a file named `./migrations/post/1513695986378-create-post.js` (the timestamp will vary)
+Example: executing the command `ctf-migrate create create-post-model -c post -t template.ts -e .ts` will create
+a file named `./migrations/post/1513695986378-create-post.ts` (the timestamp will vary)
 
 ### list
 
