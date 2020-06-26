@@ -49,7 +49,7 @@ exports.handler = ({ name, contentType, templateFile, extension }) => {
     : !!process.env.TEMPLATE_FILE && typeof process.env.TEMPLATE_FILE === 'string'
       ? path.isAbsolute(process.env.TEMPLATE_FILE) 
         ? process.env.TEMPLATE_FILE
-        : path.join(__dirname, process.env.TEMPLATE_FILE)
+        : path.join(process.cwd(), process.env.TEMPLATE_FILE)
       : path.join(__dirname, '..', '..', 'lib', 'template.js')
   extension = !!extension
     ? extension
