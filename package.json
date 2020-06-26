@@ -29,17 +29,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deluan/contentful-migrate.git"
+    "url": "git+https://github.com/devlato/contentful-migrate.git"
   },
   "contributors": [
+    "Denis Tokarev",
     "Deluan Quintao",
     "Jerry Ma"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/deluan/contentful-migrate/issues"
+    "url": "https://github.com/devlato/contentful-migrate/issues"
   },
-  "homepage": "https://github.com/deluan/contentful-migrate#readme",
+  "homepage": "https://github.com/devlato/contentful-migrate#readme",
   "devDependencies": {
     "expect.js": "^0.3.1",
     "growl": "^1.10.5",
