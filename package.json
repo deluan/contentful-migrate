@@ -1,12 +1,13 @@
 {
-  "name": "contentful-migrate",
+  "name": "contentful-migrate-fork",
   "version": "0.13.0",
-  "description": "Migration tooling for Contentful, with state management",
+  "description": "Migration tooling for Contentful, with state management and custom templates support",
   "keywords": [
     "migrate",
     "migrations",
     "contentful",
-    "cms-as-code"
+    "cms-as-code",
+    "typescript"
   ],
   "engines": {
     "node": ">=8"
