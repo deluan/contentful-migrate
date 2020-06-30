@@ -18,7 +18,7 @@ exports.builder = (yargs) => {
       describe: 'content type name',
       type: 'string',
       requiresArg: true,
-      demandOption: true
+      demandOption: false
     })
     .option('template-file', {
       alias: 't',
@@ -41,13 +41,15 @@ exports.builder = (yargs) => {
 }
 
 exports.handler = ({ name, contentType, templateFile, extension }) => {
-  const migrationsDirectory = path.join('.', 'migrations', contentType)
+  const migrationsDirectory = !!contentType
+    ? path.join(process.cwd(), 'migrations', contentType)
+    : path.join(process.cwd(), 'migrations')
   templateFile = !!templateFile
-    ? path.isAbsolute(templateFile) 
+    ? path.isAbsolute(templateFile)
       ? templateFile
       : path.join(process.cwd(), templateFile)
     : !!process.env.TEMPLATE_FILE && typeof process.env.TEMPLATE_FILE === 'string'
-      ? path.isAbsolute(process.env.TEMPLATE_FILE) 
+      ? path.isAbsolute(process.env.TEMPLATE_FILE)
         ? process.env.TEMPLATE_FILE
         : path.join(process.cwd(), process.env.TEMPLATE_FILE)
       : path.join(__dirname, '..', '..', 'lib', 'template.js')
