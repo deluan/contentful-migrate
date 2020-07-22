@@ -4,6 +4,7 @@
 [![contentful-migration version](https://img.shields.io/npm/dependency-version/contentful-migrate/contentful-migration)](https://www.npmjs.com/package/contentful-migration)
 [![Build Status](https://github.com/deluan/contentful-migrate/workflows/CI/badge.svg)](https://github.com/deluan/contentful-migrate/actions)
 [![Downloads](https://img.shields.io/npm/dm/contentful-migrate)](https://www.npmjs.com/package/contentful-migrate)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeluan%2Fcontentful-migrate.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeluan%2Fcontentful-migrate?ref=badge_shield)
 
 Manage your Contentful schema by creating incremental scripted changes. This project is based on the ideas exposed
 in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/)
@@ -204,3 +205,7 @@ For more information on how to write migrations, see
 
 This tool is based on [node-migrate](https://github.com/tj/node-migrate). For more
 information on how to run migrations, see [Running migrations](https://github.com/tj/node-migrate#running-migrations)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeluan%2Fcontentful-migrate.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeluan%2Fcontentful-migrate?ref=badge_large)
