@@ -1,12 +1,13 @@
 {
-  "name": "contentful-migrate",
-  "version": "0.13.0",
-  "description": "Migration tooling for Contentful, with state management",
+  "name": "contentful-migrate-fork",
+  "version": "0.13.1",
+  "description": "Migration tooling for Contentful, with state management and custom templates support",
   "keywords": [
     "migrate",
     "migrations",
     "contentful",
-    "cms-as-code"
+    "cms-as-code",
+    "typescript"
   ],
   "engines": {
     "node": ">=8"
@@ -28,17 +29,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deluan/contentful-migrate.git"
+    "url": "git+https://github.com/devlato/contentful-migrate.git"
   },
   "contributors": [
+    "Denis Tokarev",
     "Deluan Quintao",
     "Jerry Ma"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/deluan/contentful-migrate/issues"
+    "url": "https://github.com/devlato/contentful-migrate/issues"
   },
-  "homepage": "https://github.com/deluan/contentful-migrate#readme",
+  "homepage": "https://github.com/devlato/contentful-migrate#readme",
   "devDependencies": {
     "expect.js": "^0.3.1",
     "growl": "^1.10.5",

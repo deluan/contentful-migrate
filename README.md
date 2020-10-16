@@ -1,9 +1,9 @@
 # Contentful Migrate Tool
 
-[![npm](https://img.shields.io/npm/v/contentful-migrate.svg)](https://www.npmjs.com/package/contentful-migrate)
-[![contentful-migration version](https://img.shields.io/npm/dependency-version/contentful-migrate/contentful-migration)](https://www.npmjs.com/package/contentful-migration)
-[![Build Status](https://github.com/deluan/contentful-migrate/workflows/CI/badge.svg)](https://github.com/deluan/contentful-migrate/actions)
-[![Downloads](https://img.shields.io/npm/dm/contentful-migrate)](https://www.npmjs.com/package/contentful-migrate)
+[![npm](https://img.shields.io/npm/v/contentful-migrate-fork.svg)](https://www.npmjs.com/package/contentful-migrate-fork)
+[![contentful-migration version](https://img.shields.io/npm/dependency-version/contentful-migrate-fork/contentful-migration)](https://www.npmjs.com/package/contentful-migration)
+[![Build Status](https://github.com/devlato/contentful-migrate-fork/workflows/CI/badge.svg)](https://github.com/devlato/contentful-migrate-fork/actions)
+[![Downloads](https://img.shields.io/npm/dm/contentful-migrate-fork)](https://www.npmjs.com/package/contentful-migrate-fork)
 
 Manage your Contentful schema by creating incremental scripted changes. This project is based on the ideas exposed
 in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/)
@@ -119,10 +119,12 @@ Creates an empty time stamped file in the content-type's migrations folder.
   Options:
 
     -c, --content-type <content-type>  content type name
+    -t, --migration-template <migration-template>  migration file template path
+    -e, --extension <extension>  generated migration file extension
 ```
 
-Example: executing the command `ctf-migrate create create-post-model -c post` will create
-a file named `./migrations/post/1513695986378-create-post.js` (the timestamp will vary)
+Example: executing the command `ctf-migrate create create-post-model -c post -t template.ts -e .ts` will create
+a file named `./migrations/post/1513695986378-create-post.ts` (the timestamp will vary)
 
 ### list
 
