@@ -9,7 +9,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        node_version: [8, 10, 12]
+        node_version: [10, 12, 14]
 
     steps:
       - uses: actions/checkout@v1
