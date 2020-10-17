@@ -26,14 +26,17 @@ exports.builder = (yargs) => {
       describe: 'space id to use',
       type: 'string',
       requiresArg: true,
-      demandOption: true
+      demandOption: true,
+      default: process.env.CONTENTFUL_SPACE_ID,
+      defaultDescription: 'environment var CONTENTFUL_SPACE_ID'
     })
     .option('environment-id', {
       alias: 'e',
       describe: 'id of the environment within the space',
       type: 'string',
       requiresArg: true,
-      default: 'master'
+      default: process.env.CONTENTFUL_ENV_ID || 'master',
+      defaultDescription: 'environment var CONTENTFUL_ENV_ID if exists, otherwise master'
     })
     .option('content-type', {
       alias: 'c',
