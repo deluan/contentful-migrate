@@ -71,6 +71,10 @@ Most of the available commands need a
 for accessing the CMA (Contentful Management API). You can pass the token using the `--access-token`
 option or setting an environment variable called `CONTENTFUL_MANAGEMENT_ACCESS_TOKEN`
 
+Similarly, a default contentful space and environment id can be specified by setting the `CONTENTFUL_SPACE_ID`
+and `CONTENTFUL_ENV_ID` environment variables, which will be used as defaults for any command that accepts
+the `--space-id` and `--environment-id` options.
+
 ### init
 
 Creates the content type 'Migration' into the designated contentful space. This will be
