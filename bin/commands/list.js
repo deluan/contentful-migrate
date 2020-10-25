@@ -64,7 +64,7 @@ exports.builder = (yargs) => {
 exports.handler = async ({
   spaceId, environmentId, contentType, accessToken
 }) => {
-  const migrationsDirectory = path.join('.', 'migrations')
+  const migrationsDirectory = process.env.CONTENTFUL_MIGRATIONS_DIR || path.join('.', 'migrations')
 
   const listSet = (set) => {
     // eslint-disable-next-line no-console
