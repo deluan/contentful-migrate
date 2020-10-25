@@ -53,6 +53,8 @@ your-project
 
 ```
 
+If you don't wish to have your migrations directory in the root of your project, you can configure the name and location by setting the CONTENTFUL_MIGRATION_DIR environment variable.
+
 For more information on schema migrations technique and practice, see:
 
 - [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html)

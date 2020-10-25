@@ -27,7 +27,10 @@ exports.builder = (yargs) => {
 }
 
 exports.handler = ({ name, contentType }) => {
-  const migrationsDirectory = path.join('.', 'migrations', contentType)
+  const migrationsDirectory = process.env.CONTENTFUL_MIGRATIONS_DIR
+    ? path.join(process.env.CONTENTFUL_MIGRATIONS_DIR, contentType)
+    : path.join('.', 'migrations', contentType)
+
   const templateFile = path.join(__dirname, '..', '..', 'lib', 'template.js')
 
   generator({

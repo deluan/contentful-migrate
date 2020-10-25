@@ -89,7 +89,7 @@ exports.handler = async (args) => {
     spaceId
   } = args
 
-  const migrationsDirectory = path.join('.', 'migrations')
+  const migrationsDirectory = process.env.CONTENTFUL_MIGRATIONS_DIR || path.join('.', 'migrations')
 
   const processSet = async (set) => {
     console.log(chalk.bold.blue('Processing'), set.store.contentTypeID)
