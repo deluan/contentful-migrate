@@ -53,7 +53,7 @@ your-project
 
 ```
 
-If you don't wish to have your migrations directory in the root of your project, you can configure the name and location by setting the CONTENTFUL_MIGRATION_DIR environment variable.
+If you don't wish to have your migrations directory in the root of your project, you can configure the name and location by setting the CONTENTFUL_MIGRATION_DIR environment variable, e.g. `/path/to/project/foo/contentful-migrations`
 
 For more information on schema migrations technique and practice, see:
 
