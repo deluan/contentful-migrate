@@ -71,6 +71,10 @@ Most of the available commands need a
 for accessing the CMA (Contentful Management API). You can pass the token using the `--access-token`
 option or setting an environment variable called `CONTENTFUL_MANAGEMENT_ACCESS_TOKEN`
 
+Similarly, a default contentful space and environment id can be specified by setting the `CONTENTFUL_SPACE_ID`
+and `CONTENTFUL_ENV_ID` environment variables, which will be used as defaults for any command that accepts
+the `--space-id` and `--environment-id` options.
+
 ### init
 
 Creates the content type 'Migration' into the designated contentful space. This will be
@@ -82,8 +86,8 @@ used to keep track of the current state of each managed content type.
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -s, --space-id [space-id]          space id to use
-    -e, --environment-id [env-id]      id of the environment within the space (default 'master')
+    -s, --space-id [space-id]          space id to use (defaults to environment variable CONTENTFUL_SPACE_ID)
+    -e, --environment-id [env-id]      id of the environment within the space (defaults to environment variable CONTENTFUL_ENV_ID if set, otherwise defaults to 'master')
 ```
 
 If the target space already has been init'd before, it will throw an error:
@@ -101,8 +105,8 @@ Note: It will delete any existing migration scripts and create a consolidated on
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -s, --space-id [space-id]          space id to use
-    -e, --environment-id [env-id]      id of the environment within the space (default 'master')
+    -s, --space-id [space-id]          space id to use (defaults to environment variable CONTENTFUL_SPACE_ID)
+    -e, --environment-id [env-id]      id of the environment within the space (defaults to environment variable CONTENTFUL_ENV_ID if set, otherwise defaults to 'master')
     -c, --content-type [content-type]  one or more content type to bootstrap with choice to overwrite migration state
     -a, --all                          apply bootstrap to all with choice to overwrite migration state
 ```
@@ -135,8 +139,8 @@ applied and when.
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -s, --space-id [space-id]          space id to use
-    -e, --environment-id [env-id]      id of the environment within the space (default 'master')
+    -s, --space-id [space-id]          space id to use (defaults to environment variable CONTENTFUL_SPACE_ID)
+    -e, --environment-id [env-id]      id of the environment within the space (defaults to environment variable CONTENTFUL_ENV_ID if set, otherwise defaults to 'master')
     -c, --content-type [content-type]  one or more content type names to list
     -a, --all                          lists migrations for all content types
 ```
@@ -167,8 +171,8 @@ the specified content-type into the specified space.
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -s, --space-id [space-id]          space id to use
-    -e, --environment-id [env-id]      id of the environment within the space (default 'master')
+    -s, --space-id [space-id]          space id to use (defaults to environment variable CONTENTFUL_SPACE_ID)
+    -e, --environment-id [env-id]      id of the environment within the space (defaults to environment variable CONTENTFUL_ENV_ID if set, otherwise defaults to 'master')
     -c, --content-type [content-type]  one or more content type names to process
     -a, --all                          processes migrations for all content types
     -d, --dry-run                      only shows the plan, don't write anything to contentful. defaults to false
@@ -191,8 +195,8 @@ for the specified content-type from the specified space.
   Options:
 
     -t, --access-token [access-token]  CMA token, defaults to your environment variable CONTENTFUL_MANAGEMENT_ACCESS_TOKEN if empty
-    -s, --space-id [space-id]          space id to use
-    -e, --environment-id [env-id]      id of the environment within the space (default 'master')
+    -s, --space-id [space-id]          space id to use (defaults to environment variable CONTENTFUL_SPACE_ID)
+    -e, --environment-id [env-id]      id of the environment within the space (defaults to environment variable CONTENTFUL_ENV_ID if set, otherwise defaults to 'master')
     -c, --content-type [content-type]  content type name
     -d, --dry-run                      only shows the plan, don't write anything to contentful. defaults to false
 ```

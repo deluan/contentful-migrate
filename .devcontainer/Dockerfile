@@ -24,18 +24,15 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Zsh, Oh-My-Zsh and plugins
-RUN sh -c "$(curl https://raw.githubusercontent.com/deluan/zsh-in-docker/master/zsh-in-docker.sh)" -- \
-  -p git -p ssh-agent \
+RUN sh -c "$(curl -sSL https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- \
+  -p git -p ssh-agent -p history-substring-search \
   -p https://github.com/zsh-users/zsh-autosuggestions \
   -p https://github.com/zsh-users/zsh-completions \
-  -p https://github.com/zsh-users/zsh-history-substring-search \
-  -p https://github.com/zdharma/fast-syntax-highlighting
+  -p https://github.com/zdharma/fast-syntax-highlighting \
+  -a '[ -f /workspaces/contentful-migrate/.envrc ] && eval "$(direnv hook zsh)"'
 
 # Override Powerlevel9(10)k prompt provided by zsh-in-docker
 RUN echo 'POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir vcs status)' >> ~/.zshrc
-
-# Configure direnv (https://direnv.net/)
-RUN echo '[ -f /workspaces/contentful-migrate/.envrc ] && eval "$(direnv hook zsh)"' >> ~/.zshrc
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=

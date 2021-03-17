@@ -12,3 +12,4 @@ sonar-project.properties
 coverage
 .scannerwork
 .devcontainer
+.envrc
