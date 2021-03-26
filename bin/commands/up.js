@@ -9,6 +9,7 @@ const pMap = require('p-map')
 const runMigrations = require('migrate/lib/migrate')
 const log = require('migrate/lib/log')
 const load = require('../../lib/load')
+const registerCompiler = require('migrate/lib/register-compiler')
 
 exports.command = 'up [file]'
 
@@ -48,6 +49,11 @@ exports.builder = (yargs) => {
       array: true,
       default: []
     })
+    .option('compiler', {
+      describe: 'compiler to add, e.g. "ts:./tsnode.js"',
+      type: 'string',
+      requiresArg: false
+    })
     .option('all', {
       alias: 'a',
       describe: 'processes migrations for all content types',
@@ -86,8 +92,12 @@ exports.handler = async (args) => {
     dryRun,
     environmentId,
     file,
-    spaceId
+    spaceId,
+    compiler
   } = args
+  if (compiler) {
+    registerCompiler(compiler)
+  }
 
   const migrationsDirectory = path.join('.', 'migrations')
 

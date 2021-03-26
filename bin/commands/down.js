@@ -5,6 +5,7 @@ const path = require('path')
 const runMigrations = require('migrate/lib/migrate')
 const log = require('migrate/lib/log')
 const load = require('../../lib/load')
+const registerCompiler = require('migrate/lib/register-compiler')
 
 exports.command = 'down [file]'
 
@@ -43,6 +44,11 @@ exports.builder = (yargs) => {
       describe: 'single content type name to process',
       demandOption: true
     })
+    .option('compiler', {
+      describe: 'compiler to add, e.g. "ts:./tsnode.js"',
+      type: 'string',
+      requiresArg: false
+    })
     .option('dry-run', {
       alias: 'd',
       describe: 'only shows the planned actions, don\'t write anything to Contentful',
@@ -62,8 +68,12 @@ exports.handler = async (args) => {
     dryRun,
     environmentId,
     file,
-    spaceId
+    spaceId,
+    compiler
   } = args
+  if (compiler) {
+    registerCompiler(compiler)
+  }
 
   const migrationsDirectory = path.join('.', 'migrations')
 
