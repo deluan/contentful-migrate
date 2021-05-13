@@ -1,0 +1,38 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "10:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: husky
+    versions:
+    - ">= 4.a, < 5"
+  - dependency-name: mkdirp
+    versions:
+    - "> 0.5.1"
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+  - dependency-name: chalk
+    versions:
+    - 4.1.0
+  - dependency-name: contentful-migration
+    versions:
+    - 4.0.11
+    - 4.0.5
+    - 4.0.6
+    - 4.0.7
+    - 4.0.8
+    - 4.0.9
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+    - 4.17.21
+  - dependency-name: mocha
+    versions:
+    - 8.2.1
+    - 8.3.0
+    - 8.3.1
