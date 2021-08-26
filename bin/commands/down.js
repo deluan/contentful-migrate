@@ -65,7 +65,7 @@ exports.handler = async (args) => {
     spaceId
   } = args
 
-  const migrationsDirectory = path.join('.', 'migrations')
+  const migrationsDirectory = process.env.CONTENTFUL_MIGRATIONS_DIR || path.join('.', 'migrations')
 
   const processSet = (set) => {
     const name = (file) || set.lastRun

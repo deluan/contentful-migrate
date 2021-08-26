@@ -84,7 +84,7 @@ exports.handler = async (args) => {
     })
   }
 
-  const migrationsDirectory = path.join('.', 'migrations')
+  const migrationsDirectory = process.env.CONTENTFUL_MIGRATIONS_DIR || path.join('.', 'migrations')
   let writeMigrationState = false
   if (contentType.length > 0) {
     const answer = await asyncQuestion(chalk.bold.yellow(`⚠️   Do you want to generate initial migration state for ${contentType}? y/N: `))
