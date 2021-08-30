@@ -48,7 +48,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "contentful-management": "^7.11.0",
-    "contentful-migration": "4.0.10",
+    "contentful-migration": "4.5.0",
     "dateformat": "^3.0.3",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
