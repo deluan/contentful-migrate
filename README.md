@@ -53,7 +53,7 @@ your-project
 
 ```
 
-If you don't wish to have your migrations directory in the root of your project, you can configure the name and location by setting the CONTENTFUL_MIGRATION_DIR environment variable, e.g. `/path/to/project/foo/contentful-migrations`
+If you don't wish to have your migrations directory in the root of your project, you can configure the name and location by setting the CONTENTFUL_MIGRATIONS_DIR environment variable, e.g. `/path/to/project/foo/contentful-migrations`
 
 > **ATTENTION**: The migrations directory should always be a folder under the project's root (or under some subdir inside the root). Placing the directory outside of the project's version control could lead to the migration code and Contentful schema becoming out-of-sync.
 
