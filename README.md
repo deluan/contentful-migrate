@@ -5,6 +5,13 @@
 [![Build Status](https://github.com/deluan/contentful-migrate/workflows/CI/badge.svg)](https://github.com/deluan/contentful-migrate/actions)
 [![Downloads](https://img.shields.io/npm/dm/contentful-migrate)](https://www.npmjs.com/package/contentful-migrate)
 
+### Update
+This project has been forked from deluan/contentful-migrate. Changes have been made to allow for specific scenarios needed. Please see list below of
+changes:
+
+- Ability to create a contentful environment once the local migration file has been created. The contentful environment uses the same name as the
+  migration file.
+  
 Manage your Contentful schema by creating incremental scripted changes. This project is based on the ideas exposed
 in [Contentful's CMS as Code article](https://www.contentful.com/r/knowledgebase/cms-as-code/)
 
